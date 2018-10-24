@@ -5,6 +5,8 @@
  */
 package tp2_lp;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.io.BufferedReader;
@@ -14,14 +16,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.StringTokenizer;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Daniel
  */
 public class MyUI extends javax.swing.JFrame {
-    ArrayList<Pessoa> pessoas = new ArrayList<>();
-    ArrayList<Servico> servicos = new ArrayList<>();
+    static ArrayList<Pessoa> pessoas = new ArrayList<>();
+    static ArrayList<Servico> servicos = new ArrayList<>();
     int logado = 0; //0 para nao logado, 1 para logado como adm, 2 para logado como profissional e 3 para logado como cliente
     /**
      * Creates new form MyUI
@@ -195,25 +199,70 @@ public class MyUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MyUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        try{//nao quer achar meu arquivo por nada nesse mundo
-            BufferedReader buffRead = new BufferedReader(new FileReader("arqs/pessoas.txt"));System.out.println("Hello world!");
+        String username = null;
+        String email = null;
+        String password = null;
+        int tipo = 0;
+        
+        try{
+            BufferedReader buffRead = new BufferedReader(new FileReader("C:\\Users\\Daniel.BATCOMPUTER\\Desktop\\TP2_LP\\src\\tp2_lp\\arqs\\pessoas.txt"));
             String linha = "";
             while (true) {
                 if (linha != null) {
-                    System.out.println(linha);
-
+                    StringTokenizer tokens = new StringTokenizer(linha, " ");
+                    if(tokens.hasMoreTokens()){
+                        username = tokens.nextToken();
+                    }
+                    if(tokens.hasMoreTokens()){
+                        email = tokens.nextToken();
+                    }
+                    if(tokens.hasMoreTokens()){
+                        password = tokens.nextToken();
+                    }
+                    if(tokens.hasMoreTokens()){
+                        tipo = Integer.parseInt(tokens.nextToken());
+                    }
+                    if(tipo==1){
+                        pessoas.add(new Administrador(username, email, password, tipo, pessoas, servicos));
+                    }else if(tipo==2){
+                        pessoas.add(new Profissional(username, email, password, tipo, servicos));
+                    }else if(tipo==3){
+                        pessoas.add(new Cliente(username, email, password, tipo, servicos));
+                    }
                 } else
                     break;
                 linha = buffRead.readLine();
             }
             buffRead.close();
         }catch(FileNotFoundException e){
-            
+            e.printStackTrace();
         }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MyUI().setVisible(true);
+                JFrame UI = new MyUI();
+                UI.setVisible(true);
+                UI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                UI.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent e) {
+                            try{
+                                BufferedWriter buffWrite = new BufferedWriter(new FileWriter("C:\\Users\\Daniel.BATCOMPUTER\\Desktop\\TP2_LP\\src\\tp2_lp\\arqs\\pessoas.txt"));
+                                String linha = "";
+                                for(Pessoa p : pessoas){
+                                    linha.concat(p.getUsername()+" "+p.getEmail()+" "+p.getPassword()+" "+p.getTipo()+" "+"null");//este null se refere aos servicos, que nao concerne a esta entrega
+                                    buffWrite.append(linha);
+                                    buffWrite.append("\n");
+                                    linha="";
+                                }
+                                buffWrite.close();
+                                System.exit(0);
+                            }catch(Exception x){
+                                x.printStackTrace();
+                                System.exit(0);
+                            }
+			}
+                });
+                
             }
         });
     }
