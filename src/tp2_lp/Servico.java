@@ -1,3 +1,5 @@
+package tp2_lp;
+
 
 import java.util.ArrayList;
 
@@ -12,22 +14,21 @@ import java.util.ArrayList;
  * @author Daniel
  */
 class Servico {
-    private ArrayList<Pessoa> profissionais = new ArrayList<>();
+    private ArrayList<Profissional> profissionais = new ArrayList<>();
     private boolean valido;
     private String nome;
-    private double valor;
 
     public Servico(String nome) {
         this.nome = nome;
         this.valido = false;
     }
 
-    public ArrayList<Pessoa> getProfissionais() {
+    public ArrayList<Profissional> getProfissionais() {
         return profissionais;
     }
 
-    public void setProfissionais(ArrayList<Pessoa> profissionais) {
-        this.profissionais = profissionais;
+    public void addProfissionais(Profissional e) {
+        profissionais.add(e);
     }
 
     public boolean isValido() {

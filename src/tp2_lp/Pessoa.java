@@ -1,3 +1,8 @@
+package tp2_lp;
+
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,26 +17,22 @@ public abstract class Pessoa {
     protected String username;
     protected String email;
     protected String password;
-    private int tipo; // 1 - adm, 2 - profissional, 3 - cliente
+    protected int tipo; // 1 - adm, 2 - profissional, 3 - cliente
+    protected ArrayList<Servico> servicos = new ArrayList<>();
 
-    public Pessoa(String username, String email, String password, int tipo) {
+    public Pessoa(String username, String email, String password, int tipo, ArrayList<Servico> servicos) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.tipo = tipo;
+        this.servicos = servicos;
     }
-
-    public int getTipo() {
-        return tipo;
+    
+    public void cadastraServico(String nome){
+        Servico s = new Servico(nome);
+        servicos.add(s);
     }
-
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
-    }
-
-    public Pessoa() {
-    }
-
+    
     public boolean alterarNome(String novoNome, String senha){
         if(senha.equals(this.password)){
             setUsername(novoNome);
@@ -56,6 +57,26 @@ public abstract class Pessoa {
         return false;
     }
     
+    public Cliente cadastraCliente(String username, String email, String password, int tipo, ArrayList<Servico> servicos){
+        return new Cliente (username, email, password, 2, servicos);
+    }
+
+    public ArrayList<Servico> getServicos() {
+        return servicos;
+    }
+
+    public void setServicos(ArrayList<Servico> servicos) {
+        this.servicos = servicos;
+    }
+    
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
     public String getUsername() {
         return username;
     }
