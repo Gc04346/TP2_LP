@@ -153,10 +153,10 @@ public class MyUI extends javax.swing.JFrame {
         }
         if(logado != 0){
             switch(logado){
-                case 1: AdministradorView admView = new AdministradorView(this, (Administrador) pessoaAtual);
+                case 1: AdmUI admView = new AdmUI(this, (Administrador) pessoaAtual);
                         this.hide();
                         admView.show();
-                case 2: ProfissionalView profView = new ProfissionalView(this, (Profissional) pessoaAtual);
+                case 2: ProfUI profView = new ProfUI(this, (Profissional) pessoaAtual);
                         this.hide();
                         profView.show();
                 case 3: ClienteView cltView = new ClienteView(this, (Cliente) pessoaAtual);
@@ -210,7 +210,7 @@ public class MyUI extends javax.swing.JFrame {
         int tipo = 0;
         
         try{
-            BufferedReader buffRead = new BufferedReader(new FileReader("C:\\Users\\Mauricio\\Documents\\NetBeansProjects\\tp2_lp\\src\\tp2_lp\\arqs\\pessoas.txt"));
+            BufferedReader buffRead = new BufferedReader(new FileReader("/home/daniel/Projetos/LP/TP2/src/tp2_lp/arqs/pessoas.txt"));
             String linha = "";
             while (true) {
                 if (linha != null) {
@@ -251,7 +251,7 @@ public class MyUI extends javax.swing.JFrame {
                 UI.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e) {
                             try{
-                                BufferedWriter buffWrite = new BufferedWriter(new FileWriter("C:\\Users\\Mauricio\\Documents\\NetBeansProjects\\tp2_lp\\src\\tp2_lp\\arqs\\pessoas.txt"));
+                                BufferedWriter buffWrite = new BufferedWriter(new FileWriter("/home/daniel/Projetos/LP/TP2/src/tp2_lp/arqs/pessoas.txt"));
                                 String linha = "";
                                 for(Pessoa p : pessoas){
                                     linha = p.getUsername()+" "+p.getEmail()+" "+p.getPassword()+" "+p.getTipo()+" "+"null"+"\n";//este null se refere aos servicos, que nao concerne a esta entrega

@@ -12,13 +12,15 @@ package tp2_lp;
 public class ClienteView extends javax.swing.JFrame {
     private static MyUI main;
     private static Cliente clt;
+    private static CltUI cltUi;
     /**
      * Creates new form ClienteView
      */
-    public ClienteView(MyUI main, Cliente clt) {
+    public ClienteView(MyUI main, Cliente clt, CltUI cltUi) {
         initComponents();
         this.main=main;
         this.clt=clt;
+        this.cltUi = cltUi;
         txtNomeUsuário.setText(clt.getUsername());
         txtEmail.setText(clt.getEmail());
         txtSenha.setText(clt.getPassword());
@@ -156,10 +158,8 @@ public class ClienteView extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        main.logado = 0;
-        main.pessoaAtual=null;
         this.hide();
-        main.show();
+        cltUi.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
@@ -192,7 +192,7 @@ public class ClienteView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClienteView(main, clt).setVisible(true);
+                new ClienteView(main, clt,cltUi).setVisible(true);
             }
         });
     }

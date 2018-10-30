@@ -12,13 +12,15 @@ package tp2_lp;
 public class AdministradorView extends javax.swing.JFrame {
     private static MyUI main;
     private static Administrador adm;
+    private static AdmUI admUi;
     /**
      * Creates new form AdministradorView
      */
-    public AdministradorView(MyUI main, Administrador adm) {
+    public AdministradorView(MyUI main, Administrador adm, AdmUI admUi) {
         initComponents();
         this.main=main;
         this.adm=adm;
+        this.admUi = admUi;
         txtNomeUsuário.setText(adm.getUsername());
         txtEmail.setText(adm.getEmail());
         txtSenha.setText(adm.getPassword());
@@ -167,10 +169,8 @@ public class AdministradorView extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        main.logado = 0;
-        main.pessoaAtual=null;
         this.hide();
-        main.show();
+        admUi.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
@@ -203,7 +203,7 @@ public class AdministradorView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdministradorView(main,adm).setVisible(true);
+                new AdministradorView(main,adm,admUi).setVisible(true);
             }
         });
     }

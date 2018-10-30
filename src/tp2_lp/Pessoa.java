@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author Daniel
  */
-public abstract class Pessoa {
+public class Pessoa {
     protected String username;
     protected String email;
     protected String password;
@@ -26,6 +26,10 @@ public abstract class Pessoa {
         this.password = password;
         this.tipo = tipo;
         this.servicos = servicos;
+    }
+    
+    public Pessoa(){
+        
     }
     
     public void cadastraServico(String nome){

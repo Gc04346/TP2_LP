@@ -12,13 +12,15 @@ package tp2_lp;
 public class ProfissionalView extends javax.swing.JFrame {
     private static MyUI main;
     private static Profissional prof;
+    private static ProfUI profUi;
     /**
      * Creates new form ProfissionalView
      */
-    public ProfissionalView(MyUI main, Profissional prof) {
+    public ProfissionalView(MyUI main, Profissional prof, ProfUI profUi) {
         initComponents();
         this.main=main;
         this.prof=prof;
+        this.profUi = profUi;
         txtNomeUsuário.setText(prof.getUsername());
         txtEmail.setText(prof.getEmail());
         txtSenha.setText(prof.getPassword());
@@ -156,10 +158,8 @@ public class ProfissionalView extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        main.logado = 0;
-        main.pessoaAtual=null;
         this.hide();
-        main.show();
+        profUi.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
@@ -192,7 +192,7 @@ public class ProfissionalView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ProfissionalView(main, prof).setVisible(true);
+                new ProfissionalView(main, prof,profUi).setVisible(true);
             }
         });
     }
