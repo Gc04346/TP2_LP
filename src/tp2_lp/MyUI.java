@@ -159,7 +159,7 @@ public class MyUI extends javax.swing.JFrame {
                 case 2: ProfUI profView = new ProfUI(this, (Profissional) pessoaAtual);
                         this.hide();
                         profView.show();
-                case 3: ClienteView cltView = new ClienteView(this, (Cliente) pessoaAtual);
+                case 3: CltUI cltView = new CltUI(this, (Cliente) pessoaAtual);
                         this.hide();
                         cltView.show();
             }

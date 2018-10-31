@@ -33,16 +33,15 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnCadastrarServico" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnOrcamentos" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnNovoAdm" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnValidarServicos" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnFazerOrcamento" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnListaOrcamentos" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txtNome" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtUsername" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="58" pref="204" max="32767" attributes="0"/>
+                      <EmptySpace min="58" pref="73" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -64,14 +63,12 @@
               <EmptySpace pref="37" max="32767" attributes="0"/>
               <Component id="btnAlterarDados" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnOrcamentos" min="-2" max="-2" attributes="0"/>
+              <Component id="btnFazerOrcamento" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnCadastrarServico" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnNovoAdm" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnValidarServicos" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Component id="btnListaOrcamentos" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
               <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -83,10 +80,13 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Novo servico"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarServicoActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnOrcamentos">
+    <Component class="javax.swing.JButton" name="btnFazerOrcamento">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Listar orcamentos"/>
+        <Property name="text" type="java.lang.String" value="Fazer orcamento"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnVoltar">
@@ -115,14 +115,9 @@
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnValidarServicos">
+    <Component class="javax.swing.JButton" name="btnListaOrcamentos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Validar servicos"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnNovoAdm">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Novo administrador"/>
+        <Property name="text" type="java.lang.String" value="Meus Orcamentos"/>
       </Properties>
     </Component>
   </SubComponents>

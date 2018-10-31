@@ -9,7 +9,7 @@ package tp2_lp;
  *
  * @author daniel
  */
-public class AdmUI extends javax.swing.JFrame {
+public class AdmUI extends PessoaUI{
     private static MyUI main;
     private static Administrador p;
     /**
@@ -47,6 +47,11 @@ public class AdmUI extends javax.swing.JFrame {
         txtNome.setText("jLabel1");
 
         btnValidarServicos.setText("Validar servicos");
+        btnValidarServicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValidarServicosActionPerformed(evt);
+            }
+        });
 
         btnNovoAdm.setText("Novo administrador");
 
@@ -133,6 +138,13 @@ public class AdmUI extends javax.swing.JFrame {
         this.hide();
         main.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnValidarServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarServicosActionPerformed
+        // TODO add your handling code here:
+        ValidarServicosView vldsView = new ValidarServicosView(main,p,this);
+        this.hide();
+        vldsView.show();
+    }//GEN-LAST:event_btnValidarServicosActionPerformed
 
     /**
      * @param args the command line arguments
