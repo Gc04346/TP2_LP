@@ -49,6 +49,11 @@ public class CltUI extends PessoaUI {
         });
 
         btnFazerOrcamento.setText("Fazer orcamento");
+        btnFazerOrcamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFazerOrcamentoActionPerformed(evt);
+            }
+        });
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +144,11 @@ public class CltUI extends PessoaUI {
         this.hide();
         nvServicoView.show();
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
+
+    private void btnFazerOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFazerOrcamentoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnFazerOrcamentoActionPerformed
 
     /**
      * @param args the command line arguments

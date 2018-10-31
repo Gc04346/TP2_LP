@@ -56,6 +56,11 @@ public class AdmUI extends PessoaUI{
         btnNovoAdm.setText("Novo administrador");
 
         btnCadastrarServico.setText("Novo servico");
+        btnCadastrarServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarServicoActionPerformed(evt);
+            }
+        });
 
         btnOrcamentos.setText("Listar orcamentos");
 
@@ -145,6 +150,13 @@ public class AdmUI extends PessoaUI{
         this.hide();
         vldsView.show();
     }//GEN-LAST:event_btnValidarServicosActionPerformed
+
+    private void btnCadastrarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarServicoActionPerformed
+        // TODO add your handling code here:
+        NovoServico nvServicoView = new NovoServico(main, this);
+        this.hide();
+        nvServicoView.show();
+    }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
     /**
      * @param args the command line arguments
