@@ -210,7 +210,7 @@ public class MyUI extends javax.swing.JFrame {
         int tipo = 0;
         
         try{
-            BufferedReader buffRead = new BufferedReader(new FileReader("/home/daniel/Projetos/LP/TP2/src/tp2_lp/arqs/pessoas.txt"));
+            BufferedReader buffRead = new BufferedReader(new FileReader("/home/isaque/Projects/TP2_Lp/src/tp2_lp/arqs/pessoas.txt"));
             String linha = "";
             while (true) {
                 if (linha != null) {
@@ -228,11 +228,11 @@ public class MyUI extends javax.swing.JFrame {
                         tipo = Integer.parseInt(tokens.nextToken());
                     }
                     if(tipo==1){
-                        pessoas.add(new Administrador(username, email, password, tipo, pessoas, servicos));
+                        pessoas.add(new Administrador(username, email, password, tipo));
                     }else if(tipo==2){
-                        pessoas.add(new Profissional(username, email, password, tipo, servicos));
+                        pessoas.add(new Profissional(username, email, password, tipo));
                     }else if(tipo==3){
-                        pessoas.add(new Cliente(username, email, password, tipo, servicos));
+                        pessoas.add(new Cliente(username, email, password, tipo));
                     }
                 } else
                     break;
@@ -251,7 +251,7 @@ public class MyUI extends javax.swing.JFrame {
                 UI.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e) {
                             try{
-                                BufferedWriter buffWrite = new BufferedWriter(new FileWriter("/home/daniel/Projetos/LP/TP2/src/tp2_lp/arqs/pessoas.txt"));
+                                BufferedWriter buffWrite = new BufferedWriter(new FileWriter("/home/isaque/Projects/TP2_Lp/src/tp2_lp/arqs/pessoas.txt"));
                                 String linha = "";
                                 for(Pessoa p : pessoas){
                                     linha = p.getUsername()+" "+p.getEmail()+" "+p.getPassword()+" "+p.getTipo()+" "+"null"+"\n";//este null se refere aos servicos, que nao concerne a esta entrega

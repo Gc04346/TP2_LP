@@ -1,24 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Daniel
- */
 public class CriarNovoUsuario extends javax.swing.JFrame {
     private static MyUI main;
     public int tipo = 0;
     public int senhaConfirmada=0;
-    /**
-     * Creates new form CriarNovoUsuario
-     */
+ 
     public CriarNovoUsuario(MyUI main) {
         initComponents();
         this.main = main;
@@ -26,15 +15,15 @@ public class CriarNovoUsuario extends javax.swing.JFrame {
     
     public Cliente criarNovoCliente(ArrayList<Pessoa> pessoas, ArrayList<Servico> servicos){
         
-      return new Cliente (txtUsername.getText(), txtEmail.getText(), txtSenha.getText(), tipo, servicos);
+      return new Cliente (txtUsername.getText(), txtEmail.getText(), txtSenha.getText(), tipo);
     }
     
     public Administrador criarNovoAdministrador(ArrayList<Pessoa> pessoas, ArrayList<Servico> servicos){
-        return new Administrador (txtUsername.getText(), txtEmail.getText(), txtSenha.getText(), tipo, pessoas, servicos);
+        return new Administrador (txtUsername.getText(), txtEmail.getText(), txtSenha.getText(), tipo);
     }
     
     public Profissional criarNovoProfissional(ArrayList<Pessoa> pessoas, ArrayList<Servico> servicos){
-        return new Profissional (txtUsername.getText(), txtEmail.getText(), txtSenha.getText(), tipo, servicos);
+        return new Profissional (txtUsername.getText(), txtEmail.getText(), txtSenha.getText(), tipo);
     }
 
     /**

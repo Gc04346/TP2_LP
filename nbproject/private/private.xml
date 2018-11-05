@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/daniel/Projetos/LP/TP2/src/tp2_lp/ProfissionalView.java</file>
-            <file>file:/home/daniel/Projetos/LP/TP2/src/tp2_lp/AdministradorView.java</file>
-            <file>file:/home/daniel/Projetos/LP/TP2/src/tp2_lp/MyUI.java</file>
-            <file>file:/home/daniel/Projetos/LP/TP2/src/tp2_lp/arqs/pessoas.txt</file>
-            <file>file:/home/daniel/Projetos/LP/TP2/src/tp2_lp/ProfUI.java</file>
-            <file>file:/home/daniel/Projetos/LP/TP2/src/tp2_lp/AdmUI.java</file>
-            <file>file:/home/daniel/Projetos/LP/TP2/src/tp2_lp/CltUI.java</file>
-            <file>file:/home/daniel/Projetos/LP/TP2/src/tp2_lp/ClienteView.java</file>
+            <file>file:/home/isaque/Projects/TP2_Lp/src/tp2_lp/AdmUI.java</file>
+            <file>file:/home/isaque/Projects/TP2_Lp/src/tp2_lp/MyUI.java</file>
+            <file>file:/home/isaque/Projects/TP2_Lp/src/tp2_lp/arqs/pessoas.txt</file>
+            <file>file:/home/isaque/Projects/TP2_Lp/src/tp2_lp/Servico.java</file>
+            <file>file:/home/isaque/Projects/TP2_Lp/src/tp2_lp/Pessoa.java</file>
+            <file>file:/home/isaque/Projects/TP2_Lp/src/tp2_lp/NovoServico.java</file>
         </group>
     </open-files>
 </project-private>
