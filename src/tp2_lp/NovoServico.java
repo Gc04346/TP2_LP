@@ -1,20 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
-/**
- *
- * @author daniel
- */
 public class NovoServico extends javax.swing.JFrame {
     private static MyUI main;
     private static PessoaUI pessoaView;
-    /**
-     * Creates new form NovoServico
-     */
+
     public NovoServico(MyUI main, PessoaUI pessoaView) {
         this.main=main;
         this.pessoaView=pessoaView;
@@ -113,7 +102,7 @@ public class NovoServico extends javax.swing.JFrame {
     private void bntEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEnviarActionPerformed
         // TODO add your handling code here:
         System.out.println(txtNomeServico.getText());
-        main.servicos.add(new Servico(txtNomeServico.getText()));
+        main.servicos.add(new Servico(txtNomeServico.getText())); // Trocar para sugestão de servico.
         this.hide();
         pessoaView.show();
     }//GEN-LAST:event_bntEnviarActionPerformed

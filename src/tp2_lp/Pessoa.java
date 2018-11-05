@@ -7,30 +7,29 @@ public class Pessoa {
     protected static int genId = 1;
     protected int id;
     protected String username;
+    protected String nome;
+    protected String endereco;
     protected String email;
+    protected String telefone;
     protected String password;
-    protected int tipo; // 1 - adm, 2 - profissional, 3 - cliente
-    // protected ArrayList<Servico> servicos; //= new ArrayList<>();
+    protected int tipo;
 
-    public Pessoa(String username, String email, String password, int tipo) {
+    public Pessoa(String username, String nome, String endereco, String email, String telefone, String password, int tipo) {
         this.id = genId; // Definicao do ID.
         this.genId++; // Gerador de ID recebe um incremento.
         this.username = username;
+        this.nome = nome;
+        this.endereco = endereco;
         this.email = email;
+        this.telefone = telefone;
         this.password = password;
         this.tipo = tipo;
-       // this.servicos = new ArrayList<>();
-       // this.servicos = servicos;
+       
     }
     
     public Pessoa(){
         
     }
-    
-    //public void cadastraServico(String nome){
-    //    Servico s = new Servico(nome);
-    //    servicos.add(s);
-    //}
     
     public boolean alterarNome(String novoNome, String senha){
         if(senha.equals(this.password)){
@@ -55,18 +54,6 @@ public class Pessoa {
         }
         return false;
     }
-    
-    public Cliente cadastraCliente(String username, String email, String password, int tipo, ArrayList<Servico> servicos){
-        return new Cliente (username, email, password, 2);
-    }
-
-    //public ArrayList<Servico> getServicos() {
-    //    return servicos;
-    //}
-
-    // public void setServicos(ArrayList<Servico> servicos) {
-    //    this.servicos = servicos;
-    //}
     
     public int getTipo() {
         return tipo;
@@ -99,6 +86,4 @@ public class Pessoa {
     public void setPassword(String password) {
         this.password = password;
     }
-    
- 
 }

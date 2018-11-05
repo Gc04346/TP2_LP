@@ -1,39 +1,39 @@
 package tp2_lp;
 
-
 import java.util.ArrayList;
 
 class Servico {
-    private ArrayList<Profissional> profissionais = new ArrayList<>();
-    private boolean valido;
+    private static int genId=1;
+    private int id;
+    private int idProfissional;
+    private double preco;
     private String nome;
 
-    public Servico(String nome) {
+    public Servico(int idProfissional, double preco, String nome) {
+        this.id = genId++;
+        this.idProfissional = idProfissional;
+        this.preco = preco;
         this.nome = nome;
-        this.valido = false;
+    }
+    
+    // Getters ans Setters
+    public int getIdServico(){
+        return id;
+    }
+    
+    public int getProfissional() {
+        return idProfissional;
     }
 
-    public ArrayList<Profissional> getProfissionais() {
-        return profissionais;
+    public double getPreco(){
+        return preco;
     }
-
-    public void addProfissionais(Profissional e) {
-        profissionais.add(e);
-    }
-
-    public boolean isValido() {
-        return valido;
-    }
-
-    public void setValido(boolean valido) {
-        this.valido = valido;
-    }
-
-    public String getNome() {
+    
+    public String getNome(){
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setPreco(double preco){
+        this.preco = preco;
     }
 }
