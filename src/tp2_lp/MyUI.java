@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
 import java.awt.event.WindowAdapter;
@@ -84,26 +79,26 @@ public class MyUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addComponent(btnNovoUsuario))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(75, 75, 75)
-                        .addComponent(jLabel3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEnviar)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(11, Short.MAX_VALUE))
+                            .addComponent(txtEmail)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnEnviar)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtPassword))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,22 +199,38 @@ public class MyUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MyUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        int id = 0;
         String username = null;
+        String nome = null;
+        String endereco = null;
         String email = null;
+        String telefone = null;
         String password = null;
         int tipo = 0;
         
         try{
-            BufferedReader buffRead = new BufferedReader(new FileReader("/home/isaque/Projects/TP2_Lp/src/tp2_lp/arqs/pessoas.txt"));
+            BufferedReader buffRead = new BufferedReader(new FileReader("arqs/pessoas.txt"));
             String linha = "";
             while (true) {
                 if (linha != null) {
-                    StringTokenizer tokens = new StringTokenizer(linha, " ");
+                    StringTokenizer tokens = new StringTokenizer(linha, ";");
+                    if(tokens.hasMoreTokens()){
+                        id = Integer.parseInt(tokens.nextToken());
+                    }
                     if(tokens.hasMoreTokens()){
                         username = tokens.nextToken();
                     }
                     if(tokens.hasMoreTokens()){
+                        nome = tokens.nextToken();
+                    }
+                    if(tokens.hasMoreTokens()){
+                        endereco = tokens.nextToken();
+                    }
+                    if(tokens.hasMoreTokens()){
                         email = tokens.nextToken();
+                    }
+                    if(tokens.hasMoreTokens()){
+                        telefone = tokens.nextToken();
                     }
                     if(tokens.hasMoreTokens()){
                         password = tokens.nextToken();
@@ -228,11 +239,11 @@ public class MyUI extends javax.swing.JFrame {
                         tipo = Integer.parseInt(tokens.nextToken());
                     }
                     if(tipo==1){
-                        pessoas.add(new Administrador(username, email, password, tipo));
+                        pessoas.add(new Administrador(id, username, nome, endereco, email, telefone, password, tipo));
                     }else if(tipo==2){
-                        pessoas.add(new Profissional(username, email, password, tipo));
+                        pessoas.add(new Profissional(id, username, nome, endereco, email, telefone, password, tipo));
                     }else if(tipo==3){
-                        pessoas.add(new Cliente(username, email, password, tipo));
+                        pessoas.add(new Cliente(id, username, nome, endereco, email, telefone, password, tipo));
                     }
                 } else
                     break;
@@ -251,10 +262,10 @@ public class MyUI extends javax.swing.JFrame {
                 UI.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e) {
                             try{
-                                BufferedWriter buffWrite = new BufferedWriter(new FileWriter("/home/isaque/Projects/TP2_Lp/src/tp2_lp/arqs/pessoas.txt"));
+                                BufferedWriter buffWrite = new BufferedWriter(new FileWriter("arqs/pessoas.txt"));
                                 String linha = "";
                                 for(Pessoa p : pessoas){
-                                    linha = p.getUsername()+" "+p.getEmail()+" "+p.getPassword()+" "+p.getTipo()+" "+"null"+"\n";//este null se refere aos servicos, que nao concerne a esta entrega
+                                    linha = p.getId()+ ";" +p.getUsername()+ ";" +p.getNome()+ ";" +p.getEndereco()+ ";" +p.getEmail()+ ";" +p.getTelefone()+ ";" +p.getPassword()+ ";" +p.getTipo()+"\n";
                                     buffWrite.append(linha);
                                     linha="";
                                 }

@@ -14,6 +14,7 @@ public class Pessoa {
     protected String password;
     protected int tipo;
 
+    // Nova Pessoa.
     public Pessoa(String username, String nome, String endereco, String email, String telefone, String password, int tipo) {
         this.id = genId; // Definicao do ID.
         this.genId++; // Gerador de ID recebe um incremento.
@@ -24,9 +25,21 @@ public class Pessoa {
         this.telefone = telefone;
         this.password = password;
         this.tipo = tipo;
-       
     }
     
+    // Pessoa que já existe.
+    public Pessoa(int id, String username, String nome, String endereco, String email, String telefone, String password, int tipo) {
+        this.id = id;
+        this.username = username;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.email = email;
+        this.telefone = telefone;
+        this.password = password;
+        this.tipo = tipo;
+    }
+    
+    // Pessoa Nula.
     public Pessoa(){
         
     }
@@ -54,13 +67,37 @@ public class Pessoa {
         }
         return false;
     }
-    
-    public int getTipo() {
-        return tipo;
+
+    public int getId() {
+        return id;
     }
 
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+   
+    public int getTipo() {
+        return tipo;
     }
 
     public String getUsername() {
