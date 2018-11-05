@@ -19,10 +19,11 @@ import javax.swing.JFrame;
  * @author Daniel
  */
 public class MyUI extends javax.swing.JFrame {
-    static ArrayList<Pessoa> pessoas = new ArrayList<>();
-    static ArrayList<Servico> servicos = new ArrayList<>();
+    public static ArrayList<Pessoa> pessoas = new ArrayList<>();
+    public static ArrayList<SugestaoServico> sugestoesDeServicos = new ArrayList<>();
     public int logado = 0; //0 para nao logado, 1 para logado como adm, 2 para logado como profissional e 3 para logado como cliente
     public static Pessoa pessoaAtual;
+    public ArrayList<Servico> servicos = new ArrayList<>();
     /**
      * Creates new form MyUI
      */
@@ -151,12 +152,15 @@ public class MyUI extends javax.swing.JFrame {
                 case 1: AdmUI admView = new AdmUI(this, (Administrador) pessoaAtual);
                         this.hide();
                         admView.show();
+                        break;
                 case 2: ProfUI profView = new ProfUI(this, (Profissional) pessoaAtual);
                         this.hide();
                         profView.show();
+                        break;
                 case 3: CltUI cltView = new CltUI(this, (Cliente) pessoaAtual);
                         this.hide();
                         cltView.show();
+                        break;
             }
         }else{
             //JOptionPane.showMessageDialog(null, "Usuário inexistente");
@@ -245,6 +249,7 @@ public class MyUI extends javax.swing.JFrame {
                     }else if(tipo==3){
                         pessoas.add(new Cliente(id, username, nome, endereco, email, telefone, password, tipo));
                     }
+                    System.out.println(id+" "+username+" "+nome+" "+endereco+" "+email+" "+telefone+" "+password+" "+tipo);
                 } else
                     break;
                 linha = buffRead.readLine();

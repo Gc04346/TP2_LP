@@ -5,12 +5,14 @@ import javax.swing.JOptionPane;
 
 public class CriarNovoUsuario extends javax.swing.JFrame {
     private static MyUI main;
-    public int tipo = 0;
-    public int senhaConfirmada=0;
+    public int tipo;
+    public int senhaConfirmada;
  
     public CriarNovoUsuario(MyUI main) {
         initComponents();
         this.main = main;
+        this.senhaConfirmada=0;
+        this.tipo = 0;
     }
     
     public Cliente criarNovoCliente(){

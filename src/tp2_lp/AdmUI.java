@@ -11,7 +11,7 @@ package tp2_lp;
  */
 public class AdmUI extends PessoaUI{
     private static MyUI main;
-    private static Administrador p;
+    public static Administrador p;
     /**
      * Creates new form AdmUI
      */
@@ -54,8 +54,18 @@ public class AdmUI extends PessoaUI{
         });
 
         btnNovoAdm.setText("Novo administrador");
+        btnNovoAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoAdmActionPerformed(evt);
+            }
+        });
 
         btnCadastrarServico.setText("Novo servico");
+        btnCadastrarServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarServicoActionPerformed(evt);
+            }
+        });
 
         btnOrcamentos.setText("Listar orcamentos");
 
@@ -145,6 +155,18 @@ public class AdmUI extends PessoaUI{
         this.hide();
         vldsView.show();
     }//GEN-LAST:event_btnValidarServicosActionPerformed
+
+    private void btnCadastrarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarServicoActionPerformed
+        // TODO add your handling code here:
+        NovoServico novoServicoView = new NovoServico(main, this);
+        this.hide();
+        novoServicoView.show();
+    }//GEN-LAST:event_btnCadastrarServicoActionPerformed
+
+    private void btnNovoAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoAdmActionPerformed
+        // TODO add your handling code here:
+        CriarNovoAdministrador view = new CriarNovoAdministrador(main,this);
+    }//GEN-LAST:event_btnNovoAdmActionPerformed
 
     /**
      * @param args the command line arguments

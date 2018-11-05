@@ -23,33 +23,35 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnAlterarDados" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnCadastrarServico" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="btnOrcamentos" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnNovoAdm" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnValidarServicos" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txtNome" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtUsername" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="58" pref="63" max="32767" attributes="0"/>
+                      <EmptySpace min="70" pref="77" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnMeusServicosPrestados" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCadastrarPrecos" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAlterarDados" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,10 +70,10 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnCadastrarServico" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnNovoAdm" min="-2" max="-2" attributes="0"/>
+              <Component id="btnCadastrarPrecos" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnValidarServicos" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnMeusServicosPrestados" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
@@ -81,7 +83,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnOrcamentos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Listar orcamentos"/>
+        <Property name="text" type="java.lang.String" value="Meus pedidos"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnVoltar">
@@ -110,20 +112,29 @@
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnValidarServicos">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Validar servicos"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnNovoAdm">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Novo administrador"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="btnCadastrarServico">
       <Properties>
         <Property name="text" type="java.lang.String" value="Novo servico"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarServicoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCadastrarPrecos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cadastrar Precos"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarPrecosActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMeusServicosPrestados">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Meus servicos prestados"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMeusServicosPrestadosActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

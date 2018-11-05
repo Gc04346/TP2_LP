@@ -102,7 +102,7 @@ public class NovoServico extends javax.swing.JFrame {
     private void bntEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEnviarActionPerformed
         // TODO add your handling code here:
         System.out.println(txtNomeServico.getText());
-        main.servicos.add(new Servico(txtNomeServico.getText())); // Trocar para sugestão de servico.
+        main.sugestoesDeServicos.add(new SugestaoServico(txtNomeServico.getText())); // Trocar para sugestão de servico.
         this.hide();
         pessoaView.show();
     }//GEN-LAST:event_bntEnviarActionPerformed

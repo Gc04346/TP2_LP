@@ -9,7 +9,7 @@ package tp2_lp;
  *
  * @author daniel
  */
-public class ProfUI extends javax.swing.JFrame {
+public class ProfUI extends PessoaUI {
     private static MyUI main;
     private static Profissional p;
     /**
@@ -36,13 +36,13 @@ public class ProfUI extends javax.swing.JFrame {
         btnAlterarDados = new javax.swing.JButton();
         txtUsername = new javax.swing.JLabel();
         txtNome = new javax.swing.JLabel();
-        btnValidarServicos = new javax.swing.JButton();
-        btnNovoAdm = new javax.swing.JButton();
         btnCadastrarServico = new javax.swing.JButton();
+        btnCadastrarPrecos = new javax.swing.JButton();
+        btnMeusServicosPrestados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnOrcamentos.setText("Listar orcamentos");
+        btnOrcamentos.setText("Meus pedidos");
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -62,37 +62,53 @@ public class ProfUI extends javax.swing.JFrame {
 
         txtNome.setText("jLabel1");
 
-        btnValidarServicos.setText("Validar servicos");
-
-        btnNovoAdm.setText("Novo administrador");
-
         btnCadastrarServico.setText("Novo servico");
+        btnCadastrarServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarServicoActionPerformed(evt);
+            }
+        });
+
+        btnCadastrarPrecos.setText("Cadastrar Precos");
+        btnCadastrarPrecos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarPrecosActionPerformed(evt);
+            }
+        });
+
+        btnMeusServicosPrestados.setText("Meus servicos prestados");
+        btnMeusServicosPrestados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMeusServicosPrestadosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAlterarDados)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCadastrarServico)
-                            .addComponent(btnOrcamentos)
-                            .addComponent(btnNovoAdm)
-                            .addComponent(btnValidarServicos)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtNome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(58, 63, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVoltar)
                 .addGap(21, 21, 21))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCadastrarServico)
+                            .addComponent(btnOrcamentos)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtNome)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(70, 77, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMeusServicosPrestados)
+                            .addComponent(btnCadastrarPrecos)
+                            .addComponent(btnAlterarDados))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,9 +124,9 @@ public class ProfUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCadastrarServico)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNovoAdm)
+                .addComponent(btnCadastrarPrecos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnValidarServicos)
+                .addComponent(btnMeusServicosPrestados)
                 .addGap(18, 18, 18)
                 .addComponent(btnVoltar)
                 .addGap(20, 20, 20))
@@ -133,6 +149,25 @@ public class ProfUI extends javax.swing.JFrame {
         this.hide();
         alteraDados.show();
     }//GEN-LAST:event_btnAlterarDadosActionPerformed
+
+    private void btnCadastrarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarServicoActionPerformed
+        // TODO add your handling code here:
+        NovoServico novoServicoView = new NovoServico(main, this);
+        this.hide();
+        novoServicoView.show();
+    }//GEN-LAST:event_btnCadastrarServicoActionPerformed
+
+    private void btnCadastrarPrecosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPrecosActionPerformed
+        // TODO add your handling code here:
+        CadastrarPrecoDeServico novosPrecos = new CadastrarPrecoDeServico(main, p, this);
+        this.hide();
+        novosPrecos.show();
+    }//GEN-LAST:event_btnCadastrarPrecosActionPerformed
+
+    private void btnMeusServicosPrestadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeusServicosPrestadosActionPerformed
+        // TODO add your handling code here:
+        ListaServicosPrestados meusServicos = new ListaServicosPrestados(p,this,main);
+    }//GEN-LAST:event_btnMeusServicosPrestadosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,10 +206,10 @@ public class ProfUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterarDados;
+    private javax.swing.JButton btnCadastrarPrecos;
     private javax.swing.JButton btnCadastrarServico;
-    private javax.swing.JButton btnNovoAdm;
+    private javax.swing.JButton btnMeusServicosPrestados;
     private javax.swing.JButton btnOrcamentos;
-    private javax.swing.JButton btnValidarServicos;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel txtNome;
     private javax.swing.JLabel txtUsername;
