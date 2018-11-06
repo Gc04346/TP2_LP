@@ -68,6 +68,11 @@ public class AdmUI extends PessoaUI{
         });
 
         btnOrcamentos.setText("Listar orcamentos");
+        btnOrcamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrcamentosActionPerformed(evt);
+            }
+        });
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +171,16 @@ public class AdmUI extends PessoaUI{
     private void btnNovoAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoAdmActionPerformed
         // TODO add your handling code here:
         CriarNovoAdministrador view = new CriarNovoAdministrador(main,this);
+        this.hide();
+        view.show();
     }//GEN-LAST:event_btnNovoAdmActionPerformed
+
+    private void btnOrcamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrcamentosActionPerformed
+        // TODO add your handling code here:
+        TodosOsOrcamentosView listarOrcamentos = new TodosOsOrcamentosView(this,main);
+        this.hide();
+        listarOrcamentos.show();
+    }//GEN-LAST:event_btnOrcamentosActionPerformed
 
     /**
      * @param args the command line arguments

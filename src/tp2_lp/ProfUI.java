@@ -43,6 +43,11 @@ public class ProfUI extends PessoaUI {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnOrcamentos.setText("Meus pedidos");
+        btnOrcamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrcamentosActionPerformed(evt);
+            }
+        });
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +172,13 @@ public class ProfUI extends PessoaUI {
     private void btnMeusServicosPrestadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeusServicosPrestadosActionPerformed
         // TODO add your handling code here:
         ListaServicosPrestados meusServicos = new ListaServicosPrestados(p,this,main);
+        this.hide();
+        meusServicos.show();
     }//GEN-LAST:event_btnMeusServicosPrestadosActionPerformed
+
+    private void btnOrcamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrcamentosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOrcamentosActionPerformed
 
     /**
      * @param args the command line arguments

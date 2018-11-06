@@ -15,6 +15,13 @@ class Servico {
         this.preco = preco;
         this.nome = nome;
     }
+
+    public Servico(int id, int idProfissional, double preco, String nome) {
+        this.id = id;
+        this.idProfissional = idProfissional;
+        this.preco = preco;
+        this.nome = nome;
+    }
     
     // Getters ans Setters
     public int getIdServico(){

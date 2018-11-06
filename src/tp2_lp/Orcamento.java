@@ -16,6 +16,13 @@ public class Orcamento {
         this.preco = preco;
     }
 
+    public Orcamento(int id, int idCliente, int idServico, double preco) {
+        this.id = id;
+        this.idCliente = idCliente;
+        this.idServico = idServico;
+        this.preco = preco;
+    }
+
     // Getters ans Setters
     public int getIdOrcamento(){
         return this.id;

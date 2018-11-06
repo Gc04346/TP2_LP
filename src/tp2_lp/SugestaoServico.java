@@ -9,6 +9,11 @@ public class SugestaoServico {
         this.nome = nome;
         this.valido = false;
     }
+
+    public SugestaoServico(String nome, boolean valido) {
+        this.nome = nome;
+        this.valido = valido;
+    }
     
     public boolean isValid(){
         return this.valido;

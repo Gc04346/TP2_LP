@@ -23,7 +23,8 @@ public class MyUI extends javax.swing.JFrame {
     public static ArrayList<SugestaoServico> sugestoesDeServicos = new ArrayList<>();
     public int logado = 0; //0 para nao logado, 1 para logado como adm, 2 para logado como profissional e 3 para logado como cliente
     public static Pessoa pessoaAtual;
-    public ArrayList<Servico> servicos = new ArrayList<>();
+    public static ArrayList<Servico> servicos = new ArrayList<>();
+    public static ArrayList<Orcamento> orcamentos = new ArrayList<>();
     /**
      * Creates new form MyUI
      */
@@ -210,10 +211,16 @@ public class MyUI extends javax.swing.JFrame {
         String email = null;
         String telefone = null;
         String password = null;
+        int idProfissional = 0;
         int tipo = 0;
+        double preco = 0.0;
+        boolean validade = false;
+        int idCliente = 0;
+        int idServico = 0;
         
         try{
-            BufferedReader buffRead = new BufferedReader(new FileReader("arqs/pessoas.txt"));
+            // Leitura do arquivo de pessoas.
+            BufferedReader buffReadPessoas = new BufferedReader(new FileReader("arqs/pessoas.txt"));
             String linha = "";
             while (true) {
                 if (linha != null) {
@@ -249,12 +256,81 @@ public class MyUI extends javax.swing.JFrame {
                     }else if(tipo==3){
                         pessoas.add(new Cliente(id, username, nome, endereco, email, telefone, password, tipo));
                     }
-                    System.out.println(id+" "+username+" "+nome+" "+endereco+" "+email+" "+telefone+" "+password+" "+tipo);
                 } else
                     break;
-                linha = buffRead.readLine();
+                linha = buffReadPessoas.readLine();
             }
-            buffRead.close();
+            buffReadPessoas.close();
+            
+            // Leitura do arquivo de Servicos
+            BufferedReader buffReadServicos = new BufferedReader(new FileReader("arqs/servicos.txt"));
+            linha = "";
+            while (true) {
+                if (linha != null) {
+                    StringTokenizer tokens = new StringTokenizer(linha, ";");
+                    if(tokens.hasMoreTokens()){
+                        id = Integer.parseInt(tokens.nextToken());
+                    }
+                    if(tokens.hasMoreTokens()){
+                        idProfissional = Integer.parseInt(tokens.nextToken());
+                    }
+                    if(tokens.hasMoreTokens()){
+                        preco = Double.parseDouble(tokens.nextToken());
+                    }
+                    if(tokens.hasMoreTokens()){
+                        nome = tokens.nextToken();
+                    }
+                    servicos.add(new Servico(id, idProfissional, preco, nome));
+                } else
+                    break;
+                linha = buffReadServicos.readLine();
+            }
+            buffReadServicos.close();
+            
+            // Leitura das Sugestões de Serviços.
+            BufferedReader buffReadSugestaoServicos = new BufferedReader(new FileReader("arqs/sugestaoservicos.txt"));
+            linha = "";
+            while (true) {
+                if (linha != null) {
+                    StringTokenizer tokens = new StringTokenizer(linha, ";");
+                    if(tokens.hasMoreTokens()){
+                        validade = Boolean.parseBoolean(tokens.nextToken());
+                    }
+                    if(tokens.hasMoreTokens()){
+                        nome = tokens.nextToken();
+                    }
+                    sugestoesDeServicos.add(new SugestaoServico(nome, validade));
+                } else
+                    break;
+                linha = buffReadSugestaoServicos.readLine();
+            }
+            buffReadSugestaoServicos.close();
+            
+            // Leitura dos orcamentos.
+            BufferedReader buffReadOrcamentos = new BufferedReader(new FileReader("arqs/orcamentos.txt"));
+            linha = "";
+            while (true) {
+                if (linha != null) {
+                    StringTokenizer tokens = new StringTokenizer(linha, ";");
+                    if(tokens.hasMoreTokens()){
+                        id = Integer.parseInt(tokens.nextToken());
+                    }
+                    if(tokens.hasMoreTokens()){
+                        idCliente = Integer.parseInt(tokens.nextToken());
+                    }
+                    if(tokens.hasMoreTokens()){
+                        idServico = Integer.parseInt(tokens.nextToken());
+                    }
+                    if(tokens.hasMoreTokens()){
+                        preco = Double.parseDouble(tokens.nextToken());
+                    }
+                    orcamentos.add(new Orcamento(id, idCliente, idServico, preco));
+                } else
+                    break;
+                linha = buffReadOrcamentos.readLine();
+            }
+            buffReadOrcamentos.close();
+            
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }
@@ -266,20 +342,46 @@ public class MyUI extends javax.swing.JFrame {
                 UI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 UI.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e) {
-                            try{
-                                BufferedWriter buffWrite = new BufferedWriter(new FileWriter("arqs/pessoas.txt"));
+                            try{ // Tentativa de escrita nos arquivos.
+                                // Abrindo os arquivos.
+                                BufferedWriter buffWritePessoas = new BufferedWriter(new FileWriter("arqs/pessoas.txt"));
+                                BufferedWriter buffWriteServicos = new BufferedWriter(new FileWriter("arqs/servicos.txt"));
+                                BufferedWriter buffWriteSugestaoServicos = new BufferedWriter(new FileWriter("arqs/sugestaoservicos.txt"));
+                                BufferedWriter buffWriteOrcamentos = new BufferedWriter(new FileWriter("arqs/orcamentos.txt"));
                                 String linha = "";
+                                
+                                // Escrevendo nos arquivos.
                                 for(Pessoa p : pessoas){
                                     linha = p.getId()+ ";" +p.getUsername()+ ";" +p.getNome()+ ";" +p.getEndereco()+ ";" +p.getEmail()+ ";" +p.getTelefone()+ ";" +p.getPassword()+ ";" +p.getTipo()+"\n";
-                                    buffWrite.append(linha);
+                                    buffWritePessoas.append(linha);
                                     linha="";
                                 }
-                                buffWrite.close();
+                                for(Servico s : servicos){
+                                    linha = s.getIdServico()+ ";" +s.getProfissional()+ ";" +s.getPreco()+ ";" +s.getNome()+"\n";
+                                    buffWriteServicos.append(linha);
+                                    linha="";
+                                }
+                                for(SugestaoServico ss : sugestoesDeServicos){
+                                    linha = ss.isValid()+ ";" +ss.getNome()+"\n";
+                                    buffWriteSugestaoServicos.append(linha);
+                                    linha="";
+                                }
+                                for(Orcamento o : orcamentos){
+                                    linha = o.getIdOrcamento()+ ";" +o.getCliente()+ ";" +o.getServico()+ ";" +o.getPreco()+"\n";
+                                    buffWriteOrcamentos.append(linha);
+                                    linha="";
+                                }
+                                // Fechando os arquivos.
+                                buffWritePessoas.close();
+                                buffWriteServicos.close();
+                                buffWriteSugestaoServicos.close();
+                                buffWriteOrcamentos.close();
                                 System.exit(0);
                             }catch(Exception x){
                                 x.printStackTrace();
                                 System.exit(0);
                             }
+                            // 
 			}
                 });
                 
