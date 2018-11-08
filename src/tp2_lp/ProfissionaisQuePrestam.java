@@ -1,18 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author daniel
- */
 public class ProfissionaisQuePrestam extends javax.swing.JFrame {
     public static Servicos view;
     private static String nomeServico;
@@ -22,25 +16,35 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
      * Creates new form ProfissionaisQuePrestam
      */
     public ProfissionaisQuePrestam(Servicos view, String nomeServico) {
+        // Man, insira mais comentários. Não estou conseguindo captar o que você está fazendo.
         initComponents();
         this.view = view;
         servico = null;
         for(Servico s : view.main.servicos){
+            // Aqui está chegando um valor diferente do esperado. Ele está recebendo algo nulo.
+            System.out.println(nomeServico);
             if(s.getNome().equals(nomeServico)){
                 servico.add(s);
             }
         }
         Iterator<Servico> it = servico.iterator();
-        DefaultListModel dlm = new DefaultListModel();
+        // Definindo a tabela que irá exibir os profissionais que prestam este tipo de servico.
+        String[] nomeColunas = {"Identificador", "Nome", "Preço"};
+        List<String[]> lista = new ArrayList<>();
+        // Logica para preenchimento da table.
         while(it.hasNext()){
             Servico aux = it.next();
             for(Pessoa p : view.main.pessoas){
                 if(p.getId() == aux.getProfissional()){
-                    dlm.addElement(p.getNome()+". Preço do serviço: R$."+aux.getPreco());
+                    // Inserindo os valores.
+                    lista.add(new String[]{String.valueOf(p.getId()), String.valueOf(aux.getNome()), String.valueOf(aux.getPreco())});
                 }
             }
         }
-        listProfissionais.setModel(dlm);
+        // Criando um novo modelo padrão.
+        DefaultTableModel model = new DefaultTableModel(lista.toArray(new String[lista.size()][]), nomeColunas);
+        // Definindo este modelo padrão na nossa tabela.
+        tblProfServico.setModel(model);
     }
 
     /**
@@ -52,19 +56,24 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listProfissionais = new javax.swing.JList<>();
         btnConfirma = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblProfServico = new javax.swing.JTable();
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        listProfissionais.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(listProfissionais);
 
         btnConfirma.setText("confirma");
         btnConfirma.addActionListener(new java.awt.event.ActionListener() {
@@ -73,27 +82,40 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
             }
         });
 
+        tblProfServico.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblProfServico);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(189, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnConfirma)
-                .addGap(117, 117, 117))
+                .addGap(151, 151, 151))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConfirma)
-                .addContainerGap())
+                .addGap(6, 6, 6))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -112,8 +134,10 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
 
     private void btnConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmaActionPerformed
         // TODO add your handling code here:
-        listProfissionais.getSelectedValue();
-        view.view.main.orcamentos.add(new Orcamento(view.view.p.getId(), , )); //como fazer pra descobrir qual profissional o cliente selecionou, sendo que tenho apenas uma string contendo o nome do profissional e o preco?
+        // tblProfServico.
+        // Para resolver esta questão, a identificação do profissional, precisamos também enviar o id. Talvez utilizar uma outra forma de exibir estes dados.
+        // já que, na forma atual, eles não estão sendo exibidos corretamente.
+        // view.view.main.orcamentos.add(new Orcamento(view.view.p.getId(), , )); //como fazer pra descobrir qual profissional o cliente selecionou, sendo que tenho apenas uma string contendo o nome do profissional e o preco?
     }//GEN-LAST:event_btnConfirmaActionPerformed
 
     /**
@@ -154,7 +178,8 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirma;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listProfissionais;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblProfServico;
     // End of variables declaration//GEN-END:variables
 }

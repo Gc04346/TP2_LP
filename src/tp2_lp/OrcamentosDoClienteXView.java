@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
-/**
- *
- * @author daniel
- */
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 public class OrcamentosDoClienteXView extends javax.swing.JFrame {
     private static TodosOsOrcamentosView view;
     private static MyUI main;
@@ -27,6 +23,20 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
                 c = (Cliente) aux;
             }
         }
+        // Lógica do Jtable.
+        String[] nomesColunas = {"Serviço", "Preço"};
+        List<String[]> lista = new ArrayList<>();
+        // Preenchendo a lista.
+        for(Orcamento o : main.orcamentos){
+            if(o.getCliente() == c.getId()){ // Caso o cliente seja o responsavel pelo orçamento.
+                lista.add(new String[]{String.valueOf(o.getServico()), String.valueOf(o.getPreco())});
+            }
+        }
+        // Criando o modelo da tabela.
+        DefaultTableModel model = new DefaultTableModel(lista.toArray(new String[lista.size()][]), nomesColunas);
+        // Definindo o modelo da tabela.
+        tblOrcaClient.setModel(model);
+        
     }
 
     /**
@@ -40,6 +50,8 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnVoltar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblOrcaClient = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +62,19 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
             }
         });
 
+        tblOrcaClient.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblOrcaClient);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -57,11 +82,17 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 326, Short.MAX_VALUE)
                 .addComponent(btnVoltar))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 275, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnVoltar))
         );
 
@@ -123,5 +154,7 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVoltar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblOrcaClient;
     // End of variables declaration//GEN-END:variables
 }

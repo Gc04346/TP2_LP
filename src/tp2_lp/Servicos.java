@@ -24,6 +24,7 @@ public class Servicos extends javax.swing.JFrame {
         this.view = view;
         Iterator<Servico> it = main.servicos.iterator();
         DefaultListModel dlm = new DefaultListModel();
+        // Essa lista está sendo preenchida por nomes dos usuários.
         while(it.hasNext()){
             Servico aux = it.next();
             dlm.addElement(aux.getNome());
