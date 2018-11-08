@@ -5,28 +5,30 @@
  */
 package tp2_lp;
 
+import java.util.Iterator;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author daniel
  */
-public class OrcamentosDoClienteXView extends javax.swing.JFrame {
-    private static TodosOsOrcamentosView view;
-    private static MyUI main;
-    private static Cliente c;
-    private static String nomeClt;
+public class Servicos extends javax.swing.JFrame {
+    public static MyUI main;
+    public static CltUI view;
     /**
-     * Creates new form OrcamentosDoClienteXView
+     * Creates new form Servicos
      */
-    public OrcamentosDoClienteXView(TodosOsOrcamentosView view, MyUI main, String nomeClt) {
+    public Servicos(MyUI main, CltUI view) {
         initComponents();
-        this.view = view;
         this.main = main;
-        this.nomeClt = nomeClt;
-        for(Pessoa aux : main.pessoas){
-            if (aux.getNome().equals(nomeClt)){
-                c = (Cliente) aux;
-            }
+        this.view = view;
+        Iterator<Servico> it = main.servicos.iterator();
+        DefaultListModel dlm = new DefaultListModel();
+        while(it.hasNext()){
+            Servico aux = it.next();
+            dlm.addElement(aux.getNome());
         }
+        listServicos.setModel(dlm);
     }
 
     /**
@@ -39,9 +41,19 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listServicos = new javax.swing.JList<>();
         btnVoltar = new javax.swing.JButton();
+        btnConfirmar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        listServicos.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listServicos);
 
         btnVoltar.setText("voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -50,19 +62,39 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
             }
         });
 
+        btnConfirmar.setText("confirmar");
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 326, Short.MAX_VALUE)
-                .addComponent(btnVoltar))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnVoltar)
+                        .addGap(82, 82, 82)
+                        .addComponent(btnConfirmar)))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 275, Short.MAX_VALUE)
-                .addComponent(btnVoltar))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVoltar)
+                    .addComponent(btnConfirmar))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -85,6 +117,15 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
         view.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        // TODO add your handling code here:
+        Iterator<String> it = listServicos.getSelectedValuesList().iterator();
+        while(it.hasNext()){
+            ProfissionaisQuePrestam profs = new ProfissionaisQuePrestam(this, it.next());
+            profs.show();
+        }
+    }//GEN-LAST:event_btnConfirmarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -102,26 +143,29 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OrcamentosDoClienteXView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Servicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OrcamentosDoClienteXView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Servicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OrcamentosDoClienteXView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Servicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OrcamentosDoClienteXView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Servicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OrcamentosDoClienteXView(view, main,nomeClt).setVisible(true);
+                new Servicos(main, view).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> listServicos;
     // End of variables declaration//GEN-END:variables
 }

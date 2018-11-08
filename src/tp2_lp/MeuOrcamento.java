@@ -9,24 +9,19 @@ package tp2_lp;
  *
  * @author daniel
  */
-public class OrcamentosDoClienteXView extends javax.swing.JFrame {
-    private static TodosOsOrcamentosView view;
-    private static MyUI main;
-    private static Cliente c;
-    private static String nomeClt;
+public class MeuOrcamento extends javax.swing.JFrame {
+    public static MyUI main;
+    public static CltUI view;
+    public static Cliente c;
     /**
-     * Creates new form OrcamentosDoClienteXView
+     * Creates new form MeuOrcamento
      */
-    public OrcamentosDoClienteXView(TodosOsOrcamentosView view, MyUI main, String nomeClt) {
+    public MeuOrcamento(CltUI view, MyUI main, Cliente c) {
         initComponents();
-        this.view = view;
         this.main = main;
-        this.nomeClt = nomeClt;
-        for(Pessoa aux : main.pessoas){
-            if (aux.getNome().equals(nomeClt)){
-                c = (Cliente) aux;
-            }
-        }
+        this.view = view;
+        this.c = c;
+        
     }
 
     /**
@@ -102,20 +97,20 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OrcamentosDoClienteXView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MeuOrcamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OrcamentosDoClienteXView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MeuOrcamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OrcamentosDoClienteXView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MeuOrcamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OrcamentosDoClienteXView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MeuOrcamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OrcamentosDoClienteXView(view, main,nomeClt).setVisible(true);
+                new MeuOrcamento(view, main, c).setVisible(true);
             }
         });
     }

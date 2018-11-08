@@ -10,7 +10,7 @@ package tp2_lp;
  * @author daniel
  */
 public class CltUI extends PessoaUI {
-    private static MyUI main;
+    public static MyUI main;
     private static Cliente p;
     /**
      * Creates new form CltUI
@@ -49,6 +49,11 @@ public class CltUI extends PessoaUI {
         });
 
         btnFazerOrcamento.setText("Fazer orcamento");
+        btnFazerOrcamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFazerOrcamentoActionPerformed(evt);
+            }
+        });
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +74,11 @@ public class CltUI extends PessoaUI {
         txtNome.setText("jLabel1");
 
         btnListaOrcamentos.setText("Meus Orcamentos");
+        btnListaOrcamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaOrcamentosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,6 +149,20 @@ public class CltUI extends PessoaUI {
         this.hide();
         nvServicoView.show();
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
+
+    private void btnListaOrcamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaOrcamentosActionPerformed
+        // TODO add your handling code here:
+        MeuOrcamento orcamentos = new MeuOrcamento(this,main, p);
+        this.hide();
+        orcamentos.show();
+    }//GEN-LAST:event_btnListaOrcamentosActionPerformed
+
+    private void btnFazerOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFazerOrcamentoActionPerformed
+        // TODO add your handling code here:
+        Servicos servicos = new Servicos(main, this);
+        this.hide();
+        servicos.show();
+    }//GEN-LAST:event_btnFazerOrcamentoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -139,7 +139,7 @@ public class TodosOsOrcamentosView extends javax.swing.JFrame {
         // TODO add your handling code here:
         Iterator<String> it = listClientes.getSelectedValuesList().iterator();
         while(it.hasNext()){
-            OrcamentosDoClienteXView view = new OrcamentosDoClienteXView(this);
+            OrcamentosDoClienteXView view = new OrcamentosDoClienteXView(this, main, it.next());
             view.show();
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
