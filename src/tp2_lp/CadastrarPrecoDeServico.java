@@ -14,18 +14,16 @@ import javax.swing.DefaultListModel;
  * @author daniel
  */
 public class CadastrarPrecoDeServico extends javax.swing.JFrame {
-    private static MyUI main;
     public static Profissional p;
-    private static ProfUI profView;
+    public static ProfUI profView;
     /**
      * Creates new form CadastrarPrecoDeServico
      */
-    public CadastrarPrecoDeServico(MyUI main, Profissional p, ProfUI profView) {
+    public CadastrarPrecoDeServico(Profissional p, ProfUI profView) {
         initComponents();
-        this.main = main;
         this.p = p;
         this.profView = profView;
-        Iterator<SugestaoServico> it = main.sugestoesDeServicos.iterator();
+        Iterator<SugestaoServico> it = profView.main.sugestoesDeServicos.iterator();
         DefaultListModel dlm = new DefaultListModel();
         while(it.hasNext()){
             SugestaoServico aux = it.next();
@@ -146,7 +144,7 @@ public class CadastrarPrecoDeServico extends javax.swing.JFrame {
         // TODO add your handling code here:
         Iterator<String> it = listServicos.getSelectedValuesList().iterator();
         while(it.hasNext()){
-            CadastrarPreco cadastrarPreco = new CadastrarPreco(main,this,it.next());
+            CadastrarPreco cadastrarPreco = new CadastrarPreco(this,it.next());
             //this.hide();
             cadastrarPreco.show();
         }
@@ -188,7 +186,7 @@ public class CadastrarPrecoDeServico extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastrarPrecoDeServico(main, p, profView).setVisible(true);
+                new CadastrarPrecoDeServico(p, profView).setVisible(true);
             }
         });
     }

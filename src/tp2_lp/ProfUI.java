@@ -10,8 +10,7 @@ package tp2_lp;
  * @author daniel
  */
 public class ProfUI extends PessoaUI {
-    private static MyUI main;
-    private static Profissional p;
+    public static Profissional p;
     /**
      * Creates new form ProfUI
      */
@@ -157,21 +156,21 @@ public class ProfUI extends PessoaUI {
 
     private void btnCadastrarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarServicoActionPerformed
         // TODO add your handling code here:
-        NovoServico novoServicoView = new NovoServico(main, this);
+        NovoServico novoServicoView = new NovoServico(this);
         this.hide();
         novoServicoView.show();
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
     private void btnCadastrarPrecosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPrecosActionPerformed
         // TODO add your handling code here:
-        CadastrarPrecoDeServico novosPrecos = new CadastrarPrecoDeServico(main, p, this);
+        CadastrarPrecoDeServico novosPrecos = new CadastrarPrecoDeServico(p, this);
         this.hide();
         novosPrecos.show();
     }//GEN-LAST:event_btnCadastrarPrecosActionPerformed
 
     private void btnMeusServicosPrestadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeusServicosPrestadosActionPerformed
         // TODO add your handling code here:
-        ListaServicosPrestados meusServicos = new ListaServicosPrestados(p,this,main);
+        ListaServicosPrestados meusServicos = new ListaServicosPrestados(p,this);
         this.hide();
         meusServicos.show();
     }//GEN-LAST:event_btnMeusServicosPrestadosActionPerformed

@@ -10,15 +10,13 @@ package tp2_lp;
  * @author Mauricio
  */
 public class AdministradorView extends javax.swing.JFrame {
-    private static MyUI main;
     private static Administrador adm;
     private static AdmUI admUi;
     /**
      * Creates new form AdministradorView
      */
-    public AdministradorView(MyUI main, Administrador adm, AdmUI admUi) {
+    public AdministradorView(Administrador adm, AdmUI admUi) {
         initComponents();
-        this.main=main;
         this.adm=adm;
         this.admUi = admUi;
         txtNomeUsuário.setText(adm.getUsername());
@@ -203,7 +201,7 @@ public class AdministradorView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdministradorView(main,adm,admUi).setVisible(true);
+                new AdministradorView(adm,admUi).setVisible(true);
             }
         });
     }

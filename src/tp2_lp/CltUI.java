@@ -10,7 +10,6 @@ package tp2_lp;
  * @author daniel
  */
 public class CltUI extends PessoaUI {
-    public static MyUI main;
     private static Cliente p;
     /**
      * Creates new form CltUI
@@ -138,28 +137,28 @@ public class CltUI extends PessoaUI {
 
     private void btnAlterarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarDadosActionPerformed
         // TODO add your handling code here:
-        ClienteView alteraDados = new ClienteView(main, p, this);
+        ClienteView alteraDados = new ClienteView(p, this);
         this.hide();
         alteraDados.show();
     }//GEN-LAST:event_btnAlterarDadosActionPerformed
 
     private void btnCadastrarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarServicoActionPerformed
         // TODO add your handling code here:
-        NovoServico nvServicoView = new NovoServico(main, this);
+        NovoServico nvServicoView = new NovoServico(this);
         this.hide();
         nvServicoView.show();
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
     private void btnListaOrcamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaOrcamentosActionPerformed
         // TODO add your handling code here:
-        MeuOrcamento orcamentos = new MeuOrcamento(this,main, p);
+        MeuOrcamento orcamentos = new MeuOrcamento(this, p);
         this.hide();
         orcamentos.show();
     }//GEN-LAST:event_btnListaOrcamentosActionPerformed
 
     private void btnFazerOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFazerOrcamentoActionPerformed
         // TODO add your handling code here:
-        Servicos servicos = new Servicos(main, this);
+        Servicos servicos = new Servicos(this);
         this.hide();
         servicos.show();
     }//GEN-LAST:event_btnFazerOrcamentoActionPerformed

@@ -10,7 +10,7 @@ package tp2_lp;
  * @author daniel
  */
 public abstract class PessoaUI extends javax.swing.JFrame {
-
+    public static MyUI main;
     /**
      * Creates new form PessoaUI
      */

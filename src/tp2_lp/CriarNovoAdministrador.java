@@ -12,15 +12,13 @@ import javax.swing.JOptionPane;
  * @author daniel
  */
 public class CriarNovoAdministrador extends javax.swing.JFrame {
-    private static MyUI main;
     private static AdmUI admView;
      public int senhaConfirmada;
     /**
      * Creates new form CriarNovoAdministrador
      */
-    public CriarNovoAdministrador(MyUI main, AdmUI admView) {
+    public CriarNovoAdministrador(AdmUI admView) {
         initComponents();
-        this.main = main;
         this.admView = admView;
         this.senhaConfirmada=0;
     }
@@ -228,7 +226,7 @@ public class CriarNovoAdministrador extends javax.swing.JFrame {
         }*/
         if(txtSenhaAdmin.getText().equals(admView.p.getPassword())){
             if(txtSenha.getText().equals(txtConfirmaSenha.getText())){
-                main.pessoas.add(new Administrador (txtUsername.getText(), txtNome.getText(), txtEndereco.getText(), txtEmail.getText(), txtTelefone.getText(), txtSenha.getText(), 1));
+                admView.main.pessoas.add(new Administrador (txtUsername.getText(), txtNome.getText(), txtEndereco.getText(), txtEmail.getText(), txtTelefone.getText(), txtSenha.getText(), 1));
             }else JOptionPane.showMessageDialog(null, "Confirme a senha do novo administrador.");
         }else JOptionPane.showMessageDialog(null, "A senha do administrador atual está incorreta.");
         this.hide();
@@ -271,7 +269,7 @@ public class CriarNovoAdministrador extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CriarNovoAdministrador(main,admView).setVisible(true);
+                new CriarNovoAdministrador(admView).setVisible(true);
             }
         });
     }

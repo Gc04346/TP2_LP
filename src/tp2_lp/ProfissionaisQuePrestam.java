@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 public class ProfissionaisQuePrestam extends javax.swing.JFrame {
     public static Servicos view;
     private static String nomeServico;
-    private static ArrayList<Servico> servico;
+    private static ArrayList<Servico> servico = new ArrayList<>();
     private static Servico bolinha;
     /**
      * Creates new form ProfissionaisQuePrestam
@@ -19,10 +19,7 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
         // Man, insira mais comentários. Não estou conseguindo captar o que você está fazendo.
         initComponents();
         this.view = view;
-        servico = null;
-        for(Servico s : view.main.servicos){
-            // Aqui está chegando um valor diferente do esperado. Ele está recebendo algo nulo.
-            System.out.println(nomeServico);
+        for(Servico s : view.view.main.servicos){
             if(s.getNome().equals(nomeServico)){
                 servico.add(s);
             }
@@ -34,7 +31,7 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
         // Logica para preenchimento da table.
         while(it.hasNext()){
             Servico aux = it.next();
-            for(Pessoa p : view.main.pessoas){
+            for(Pessoa p : view.view.main.pessoas){
                 if(p.getId() == aux.getProfissional()){
                     // Inserindo os valores.
                     lista.add(new String[]{String.valueOf(p.getId()), String.valueOf(aux.getNome()), String.valueOf(aux.getPreco())});

@@ -10,19 +10,21 @@ package tp2_lp;
  * @author daniel
  */
 public class EditarPrecoView extends javax.swing.JFrame {
-    private static MyUI main;
     private static ListaServicosPrestados view;
     private static String nome;
     private static Servico s;
     /**
      * Creates new form EditarPrecoView
      */
-    public EditarPrecoView(MyUI main, ListaServicosPrestados view, String nome) {
+    public EditarPrecoView(ListaServicosPrestados view, String nome) {
         initComponents();
-        for(Servico se : this.main.servicos){
-            if(se.getNome().equals(this.nome))
+        for(Servico se : view.profView.main.servicos){
+            if(se.getNome().equals(this.nome)){
                 s = se;
+            System.out.println(s.getPreco());
+            }
         }
+        
         txtPreco.setText(""+s.getPreco());
         txtNomeServico.setText(s.getNome());
     }
@@ -146,7 +148,7 @@ public class EditarPrecoView extends javax.swing.JFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
-        for(Servico se : this.main.servicos){
+        for(Servico se : view.profView.main.servicos){
             if(se.getNome().equals(s.getNome()))
                 se.setPreco(Integer.parseInt(txtPreco.getText()));
         }
@@ -183,7 +185,7 @@ public class EditarPrecoView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditarPrecoView(main, view, nome).setVisible(true);
+                new EditarPrecoView(view, nome).setVisible(true);
             }
         });
     }

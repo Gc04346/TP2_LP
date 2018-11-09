@@ -13,19 +13,17 @@ import javax.swing.DefaultListModel;
  * @author daniel
  */
 public class ListaServicosPrestados extends javax.swing.JFrame {
-    private static Profissional p;
-    private static ProfUI profView;
-    private static MyUI main;
+    public static Profissional p;
+    public static ProfUI profView;
     
     /**
      * Creates new form ListaServicosPrestados
      */
-    public ListaServicosPrestados(Profissional p, ProfUI profView, MyUI main) {
+    public ListaServicosPrestados(Profissional p, ProfUI profView) {
         initComponents();
         this.p = p;
         this.profView = profView;
-        this.main = main;
-        Iterator<Servico> it = main.servicos.iterator();
+        Iterator<Servico> it = profView.main.servicos.iterator();
         DefaultListModel dlm = new DefaultListModel();
         while(it.hasNext()){
             Servico aux = it.next();
@@ -125,7 +123,7 @@ public class ListaServicosPrestados extends javax.swing.JFrame {
         // TODO add your handling code here:
         Iterator<String> it = listServicos.getSelectedValuesList().iterator();
         while(it.hasNext()){
-            EditarPrecoView editarPreco = new EditarPrecoView(main,this,it.next());
+            EditarPrecoView editarPreco = new EditarPrecoView(this,it.next());
             //this.hide();
             editarPreco.show();
         }
@@ -161,7 +159,7 @@ public class ListaServicosPrestados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaServicosPrestados(p, profView, main).setVisible(true);
+                new ListaServicosPrestados(p, profView).setVisible(true);
             }
         });
     }

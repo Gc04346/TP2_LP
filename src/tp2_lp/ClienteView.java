@@ -10,15 +10,13 @@ package tp2_lp;
  * @author Mauricio
  */
 public class ClienteView extends javax.swing.JFrame {
-    private static MyUI main;
     private static Cliente clt;
     private static CltUI cltUi;
     /**
      * Creates new form ClienteView
      */
-    public ClienteView(MyUI main, Cliente clt, CltUI cltUi) {
+    public ClienteView(Cliente clt, CltUI cltUi) {
         initComponents();
-        this.main=main;
         this.clt=clt;
         this.cltUi = cltUi;
         txtNomeUsuário.setText(clt.getUsername());
@@ -192,7 +190,7 @@ public class ClienteView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClienteView(main, clt,cltUi).setVisible(true);
+                new ClienteView(clt,cltUi).setVisible(true);
             }
         });
     }

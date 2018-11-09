@@ -15,18 +15,16 @@ import javax.swing.DefaultListModel;
  * @author daniel
  */
 public class ValidarServicosView extends javax.swing.JFrame {
-    private static MyUI main;
     private static Administrador a;
     private static AdmUI admView;
     /**
      * Creates new form ValidarServicosView
      */
-    public ValidarServicosView(MyUI main, Administrador a, AdmUI admView) {
+    public ValidarServicosView(Administrador a, AdmUI admView) {
         initComponents();
-        this.main=main;
         this.a=a;
         this.admView=admView;
-        Iterator<SugestaoServico> it = main.sugestoesDeServicos.iterator();
+        Iterator<SugestaoServico> it = admView.main.sugestoesDeServicos.iterator();
         DefaultListModel dlm = new DefaultListModel();
         while(it.hasNext()){
             SugestaoServico aux = it.next();
@@ -159,7 +157,7 @@ public class ValidarServicosView extends javax.swing.JFrame {
         // TODO add your handling code here:
         Iterator<String> it = listServicos.getSelectedValuesList().iterator();
         while(it.hasNext()){
-            ValidandoServico validandoServico = new ValidandoServico(main,this,it.next());
+            ValidandoServico validandoServico = new ValidandoServico(admView.main,this,it.next());
             //this.hide();
             validandoServico.show();
         }
@@ -195,7 +193,7 @@ public class ValidarServicosView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ValidarServicosView(main,a,admView).setVisible(true);
+                new ValidarServicosView(a,admView).setVisible(true);
             }
         });
         

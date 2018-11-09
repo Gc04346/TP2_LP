@@ -10,16 +10,14 @@ package tp2_lp;
  * @author daniel
  */
 public class CadastrarPreco extends javax.swing.JFrame {
-    private static MyUI main;
     private static CadastrarPrecoDeServico view;
     private static String nome;
     /**
      * Creates new form CadastrarPreco
      */
-    public CadastrarPreco(MyUI main, CadastrarPrecoDeServico view, String nome) {
+    public CadastrarPreco(CadastrarPrecoDeServico view, String nome) {
         initComponents();
         txtNomeServico.setText(nome);
-        this.main = main;
         this.view = view;
         this.nome = nome;
     }
@@ -150,7 +148,7 @@ public class CadastrarPreco extends javax.swing.JFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
-        main.servicos.add(new Servico(view.p.getId(), Double.parseDouble(txtPreco.getText()), txtNomeServico.getText()));
+        view.profView.main.servicos.add(new Servico(view.p.getId(), Double.parseDouble(txtPreco.getText()), txtNomeServico.getText()));
         this.hide();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
@@ -184,7 +182,7 @@ public class CadastrarPreco extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastrarPreco(main, view, nome).setVisible(true);
+                new CadastrarPreco(view, nome).setVisible(true);
             }
         });
     }

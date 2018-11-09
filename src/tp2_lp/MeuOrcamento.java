@@ -10,15 +10,13 @@ package tp2_lp;
  * @author daniel
  */
 public class MeuOrcamento extends javax.swing.JFrame {
-    public static MyUI main;
     public static CltUI view;
     public static Cliente c;
     /**
      * Creates new form MeuOrcamento
      */
-    public MeuOrcamento(CltUI view, MyUI main, Cliente c) {
+    public MeuOrcamento(CltUI view, Cliente c) {
         initComponents();
-        this.main = main;
         this.view = view;
         this.c = c;
         
@@ -110,7 +108,7 @@ public class MeuOrcamento extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MeuOrcamento(view, main, c).setVisible(true);
+                new MeuOrcamento(view, c).setVisible(true);
             }
         });
     }

@@ -359,16 +359,19 @@ public class MyUI extends javax.swing.JFrame {
                                 for(Servico s : servicos){
                                     linha = s.getIdServico()+ ";" +s.getProfissional()+ ";" +s.getPreco()+ ";" +s.getNome()+"\n";
                                     buffWriteServicos.append(linha);
+                                    System.out.println(linha);
                                     linha="";
                                 }
                                 for(SugestaoServico ss : sugestoesDeServicos){
                                     linha = ss.isValid()+ ";" +ss.getNome()+"\n";
                                     buffWriteSugestaoServicos.append(linha);
+                                    System.out.println(linha);
                                     linha="";
                                 }
                                 for(Orcamento o : orcamentos){
                                     linha = o.getIdOrcamento()+ ";" +o.getCliente()+ ";" +o.getServico()+ ";" +o.getPreco()+"\n";
                                     buffWriteOrcamentos.append(linha);
+                                    System.out.println(linha);
                                     linha="";
                                 }
                                 // Fechando os arquivos.

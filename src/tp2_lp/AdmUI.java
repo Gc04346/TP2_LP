@@ -10,7 +10,6 @@ package tp2_lp;
  * @author daniel
  */
 public class AdmUI extends PessoaUI{
-    private static MyUI main;
     public static Administrador p;
     /**
      * Creates new form AdmUI
@@ -141,7 +140,7 @@ public class AdmUI extends PessoaUI{
 
     private void btnAlterarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarDadosActionPerformed
         // TODO add your handling code here:
-        AdministradorView alteraDados = new AdministradorView(main, p, this);
+        AdministradorView alteraDados = new AdministradorView(p, this);
         this.hide();
         alteraDados.show();
     }//GEN-LAST:event_btnAlterarDadosActionPerformed
@@ -156,21 +155,21 @@ public class AdmUI extends PessoaUI{
 
     private void btnValidarServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarServicosActionPerformed
         // TODO add your handling code here:
-        ValidarServicosView vldsView = new ValidarServicosView(main,p,this);
+        ValidarServicosView vldsView = new ValidarServicosView(p,this);
         this.hide();
         vldsView.show();
     }//GEN-LAST:event_btnValidarServicosActionPerformed
 
     private void btnCadastrarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarServicoActionPerformed
         // TODO add your handling code here:
-        NovoServico novoServicoView = new NovoServico(main, this);
+        NovoServico novoServicoView = new NovoServico(this);
         this.hide();
         novoServicoView.show();
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
     private void btnNovoAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoAdmActionPerformed
         // TODO add your handling code here:
-        CriarNovoAdministrador view = new CriarNovoAdministrador(main,this);
+        CriarNovoAdministrador view = new CriarNovoAdministrador(this);
         this.hide();
         view.show();
     }//GEN-LAST:event_btnNovoAdmActionPerformed

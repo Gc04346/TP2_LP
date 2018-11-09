@@ -1,11 +1,9 @@
 package tp2_lp;
 
 public class NovoServico extends javax.swing.JFrame {
-    private static MyUI main;
     private static PessoaUI pessoaView;
 
-    public NovoServico(MyUI main, PessoaUI pessoaView) {
-        this.main=main;
+    public NovoServico(PessoaUI pessoaView) {
         this.pessoaView=pessoaView;
         initComponents();
     }
@@ -101,8 +99,7 @@ public class NovoServico extends javax.swing.JFrame {
 
     private void bntEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEnviarActionPerformed
         // TODO add your handling code here:
-        System.out.println(txtNomeServico.getText());
-        main.sugestoesDeServicos.add(new SugestaoServico(txtNomeServico.getText())); // Trocar para sugestão de servico.
+        pessoaView.main.sugestoesDeServicos.add(new SugestaoServico(txtNomeServico.getText())); // Trocar para sugestão de servico.
         this.hide();
         pessoaView.show();
     }//GEN-LAST:event_bntEnviarActionPerformed
@@ -137,7 +134,7 @@ public class NovoServico extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NovoServico(main,pessoaView).setVisible(true);
+                new NovoServico(pessoaView).setVisible(true);
             }
         });
     }

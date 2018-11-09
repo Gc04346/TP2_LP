@@ -13,21 +13,20 @@ import javax.swing.DefaultListModel;
  * @author daniel
  */
 public class Servicos extends javax.swing.JFrame {
-    public static MyUI main;
     public static CltUI view;
     /**
      * Creates new form Servicos
      */
-    public Servicos(MyUI main, CltUI view) {
+    public Servicos(CltUI view) {
         initComponents();
-        this.main = main;
         this.view = view;
-        Iterator<Servico> it = main.servicos.iterator();
+        Iterator<Servico> it = view.main.servicos.iterator();
         DefaultListModel dlm = new DefaultListModel();
         // Essa lista está sendo preenchida por nomes dos usuários.
         while(it.hasNext()){
             Servico aux = it.next();
             dlm.addElement(aux.getNome());
+            System.out.println(aux.getNome());
         }
         listServicos.setModel(dlm);
     }
@@ -157,7 +156,7 @@ public class Servicos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Servicos(main, view).setVisible(true);
+                new Servicos(view).setVisible(true);
             }
         });
     }
