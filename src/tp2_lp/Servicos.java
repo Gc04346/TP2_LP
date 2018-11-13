@@ -1,32 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
 
-/**
- *
- * @author daniel
- */
 public class Servicos extends javax.swing.JFrame {
     public static CltUI view;
-    /**
-     * Creates new form Servicos
-     */
+    
     public Servicos(CltUI view) {
         initComponents();
         this.view = view;
         Iterator<Servico> it = view.main.servicos.iterator();
         DefaultListModel dlm = new DefaultListModel();
-        // Essa lista está sendo preenchida por nomes dos usuários.
         while(it.hasNext()){
             Servico aux = it.next();
             dlm.addElement(aux.getNome());
-            System.out.println(aux.getNome());
         }
         listServicos.setModel(dlm);
     }

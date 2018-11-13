@@ -1,25 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
-/**
- *
- * @author daniel
- */
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 public class MeuOrcamento extends javax.swing.JFrame {
     public static CltUI view;
     public static Cliente c;
-    /**
-     * Creates new form MeuOrcamento
-     */
+    private static ArrayList<Orcamento> orcamento = new ArrayList<>();
+    
     public MeuOrcamento(CltUI view, Cliente c) {
         initComponents();
         this.view = view;
         this.c = c;
-        
+        for(Orcamento o : view.main.orcamentos){
+            if(o.getCliente() == c.getId()){ // Caso o ID do cliente presente no orçamento seja igual ao do cliente atual.
+                orcamento.add(o);
+            }
+        }
+        Iterator<Orcamento> it = orcamento.iterator();
+        // Definindo o nome das colunas na tabela.
+        String[] nomeColunas = {"Id do Orçamento", "Id Cliente", "Nome", "Preco"};
+        List<String[]> lista = new ArrayList<>();
+        // Logica para preenchimento da table.
+        while(it.hasNext()){
+            Orcamento aux = it.next();
+            // Obtendo o nome dos servicos.
+            for(Servico s : view.main.servicos){
+                if(s.getIdServico() == aux.getServico()){
+                    // Inserindo os valores.
+                    lista.add(new String[]{String.valueOf(aux.getIdOrcamento()), String.valueOf(aux.getCliente()), String.valueOf(s.getNome()), String.valueOf(aux.getPreco())});
+                }
+            }
+        }
+        // Criando um novo modelo padrão.
+        DefaultTableModel model = new DefaultTableModel(lista.toArray(new String[lista.size()][]), nomeColunas);
+        // Definindo este modelo padrão na nossa tabela.
+        tblOrcamentos.setModel(model);
     }
 
     /**
@@ -33,28 +51,48 @@ public class MeuOrcamento extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnVoltar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblOrcamentos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnVoltar.setText("voltar");
+        btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
             }
         });
 
+        tblOrcamentos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblOrcamentos);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 326, Short.MAX_VALUE)
-                .addComponent(btnVoltar))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVoltar)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 275, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(btnVoltar))
         );
 
@@ -78,9 +116,6 @@ public class MeuOrcamento extends javax.swing.JFrame {
         view.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -116,5 +151,7 @@ public class MeuOrcamento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVoltar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblOrcamentos;
     // End of variables declaration//GEN-END:variables
 }

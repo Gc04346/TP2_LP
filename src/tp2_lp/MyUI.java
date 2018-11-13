@@ -275,8 +275,8 @@ public class MyUI extends javax.swing.JFrame {
                     }
                     if(tokens.hasMoreTokens()){
                         nome = tokens.nextToken();
+                        servicos.add(new Servico(id, idProfissional, preco, nome));
                     }
-                    servicos.add(new Servico(id, idProfissional, preco, nome));
                 } else
                     break;
                 linha = buffReadServicos.readLine();
@@ -294,8 +294,8 @@ public class MyUI extends javax.swing.JFrame {
                     }
                     if(tokens.hasMoreTokens()){
                         nome = tokens.nextToken();
+                        sugestoesDeServicos.add(new SugestaoServico(nome, validade));
                     }
-                    sugestoesDeServicos.add(new SugestaoServico(nome, validade));
                 } else
                     break;
                 linha = buffReadSugestaoServicos.readLine();
@@ -319,8 +319,8 @@ public class MyUI extends javax.swing.JFrame {
                     }
                     if(tokens.hasMoreTokens()){
                         preco = Double.parseDouble(tokens.nextToken());
+                        orcamentos.add(new Orcamento(id, idCliente, idServico, preco));
                     }
-                    orcamentos.add(new Orcamento(id, idCliente, idServico, preco));
                 } else
                     break;
                 linha = buffReadOrcamentos.readLine();
@@ -355,7 +355,6 @@ public class MyUI extends javax.swing.JFrame {
                                 for(Servico s : servicos){
                                     linha = s.getIdServico()+ ";" +s.getProfissional()+ ";" +s.getPreco()+ ";" +s.getNome()+"\n";
                                     buffWriteServicos.append(linha);
-                                    System.out.println(linha);
                                     linha="";
                                 }
                                 for(SugestaoServico ss : sugestoesDeServicos){
