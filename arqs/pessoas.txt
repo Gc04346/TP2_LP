@@ -2,3 +2,4 @@
 2;Hv15457;Daniel Santana;rua Honorio Bicalho, 1051;usr@2.com;31997758992;123;2
 3;isaque;isaque;Rua João Pires 458;isaque;31993927141;123;3
 4;Teste;Teste;Rua Teste;teste;876264216;123;3
+5;adm;Administrador;Rua Adm 123;adm;111111111;123;1

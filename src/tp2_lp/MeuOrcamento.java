@@ -9,6 +9,7 @@ public class MeuOrcamento extends javax.swing.JFrame {
     public static CltUI view;
     public static Cliente c;
     private static ArrayList<Orcamento> orcamento = new ArrayList<>();
+    private static List<String[]> lista = new ArrayList<>();
     
     public MeuOrcamento(CltUI view, Cliente c) {
         initComponents();
@@ -22,7 +23,6 @@ public class MeuOrcamento extends javax.swing.JFrame {
         Iterator<Orcamento> it = orcamento.iterator();
         // Definindo o nome das colunas na tabela.
         String[] nomeColunas = {"Id do Orçamento", "Id Cliente", "Nome", "Preco"};
-        List<String[]> lista = new ArrayList<>();
         // Logica para preenchimento da table.
         while(it.hasNext()){
             Orcamento aux = it.next();
@@ -111,8 +111,10 @@ public class MeuOrcamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        // TODO add your handling code here:
-        this.hide();
+        // Duplicando os conteúdos ao fechar o form.
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.dispose();
+        this.setVisible(false);
         view.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 

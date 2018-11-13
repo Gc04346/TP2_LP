@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -156,6 +157,8 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
         Orcamento orc = new Orcamento(cliente, idServico, preco);
         // Adicionando o serviço no array de serviços da main.
         view.view.main.orcamentos.add(orc);
+        // Avisando sobre o sucesso.
+        JOptionPane.showMessageDialog(null, "Orçamento realizado com sucesso !!");
     }//GEN-LAST:event_btnConfirmaActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed

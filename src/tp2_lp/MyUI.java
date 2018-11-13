@@ -52,13 +52,13 @@ public class MyUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Fazer login:");
+        jLabel1.setText("Fazer login");
 
-        jLabel2.setText("email:");
+        jLabel2.setText("Email:");
 
-        jLabel3.setText("senha:");
+        jLabel3.setText("Senha:");
 
-        btnEnviar.setText("enviar");
+        btnEnviar.setText("Logar");
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarActionPerformed(evt);
@@ -96,7 +96,7 @@ public class MyUI extends javax.swing.JFrame {
                                 .addComponent(btnEnviar)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(txtPassword))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,14 +148,17 @@ public class MyUI extends javax.swing.JFrame {
             switch(logado){
                 case 1: AdmUI admView = new AdmUI(this, (Administrador) pessoaAtual);
                         this.hide();
+                        admView.setLocationRelativeTo(null);
                         admView.show();
                         break;
                 case 2: ProfUI profView = new ProfUI(this, (Profissional) pessoaAtual);
                         this.hide();
+                        profView.setLocationRelativeTo(null);
                         profView.show();
                         break;
                 case 3: CltUI cltView = new CltUI(this, (Cliente) pessoaAtual);
                         this.hide();
+                        cltView.setLocationRelativeTo(null);
                         cltView.show();
                         break;
             }
@@ -334,6 +337,7 @@ public class MyUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 JFrame UI = new MyUI();
+                UI.setLocationRelativeTo(null);
                 UI.setVisible(true);
                 UI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 UI.addWindowListener(new WindowAdapter(){
