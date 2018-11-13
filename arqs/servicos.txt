@@ -1,0 +1,11 @@
+4;0;0.0;Teste
+4;0;0.0;Teste
+4;0;0.0;Teste
+4;0;0.0;Teste
+4;0;0.0;Teste
+4;0;0.0;Teste
+4;0;0.0;Teste
+4;0;0.0;Teste
+4;0;0.0;Teste
+4;0;0.0;Teste
+6;2;150.0;Formatar PC.

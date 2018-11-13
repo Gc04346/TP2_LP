@@ -17,6 +17,7 @@ public class Orcamento {
     }
 
     public Orcamento(int id, int idCliente, int idServico, double preco) {
+        this.genId++;
         this.id = id;
         this.idCliente = idCliente;
         this.idServico = idServico;

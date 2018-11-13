@@ -17,6 +17,7 @@ class Servico {
     }
 
     public Servico(int id, int idProfissional, double preco, String nome) {
+        this.genId++; // Incremento já que estamos carregando algo.
         this.id = id;
         this.idProfissional = idProfissional;
         this.preco = preco;

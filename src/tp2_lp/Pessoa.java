@@ -29,6 +29,7 @@ public class Pessoa {
     
     // Pessoa que já existe.
     public Pessoa(int id, String username, String nome, String endereco, String email, String telefone, String password, int tipo) {
+        this.genId++;
         this.id = id;
         this.username = username;
         this.nome = nome;

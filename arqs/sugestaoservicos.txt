@@ -1,0 +1,13 @@
+false;Formatar PC.
+false;Formatar PC.
+false;Formatar PC.
+false;Formatar PC.
+false;Formatar PC.
+false;Teste
+false;Teste
+false;Teste
+false;Teste
+false;isaque
+false;isaque
+false;isaque
+true;Formatar PC.

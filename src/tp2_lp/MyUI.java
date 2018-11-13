@@ -14,10 +14,6 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import javax.swing.JFrame;
 
-/**
- *
- * @author Daniel
- */
 public class MyUI extends javax.swing.JFrame {
     public static ArrayList<Pessoa> pessoas = new ArrayList<>();
     public static ArrayList<SugestaoServico> sugestoesDeServicos = new ArrayList<>();

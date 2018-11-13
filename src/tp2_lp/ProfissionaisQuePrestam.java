@@ -26,7 +26,7 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
         }
         Iterator<Servico> it = servico.iterator();
         // Definindo a tabela que irá exibir os profissionais que prestam este tipo de servico.
-        String[] nomeColunas = {"Identificador", "Nome", "Preço"};
+        String[] nomeColunas = {"Id do Serviço", "Identificador", "Nome", "Preço"};
         List<String[]> lista = new ArrayList<>();
         // Logica para preenchimento da table.
         while(it.hasNext()){
@@ -34,7 +34,7 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
             for(Pessoa p : view.view.main.pessoas){
                 if(p.getId() == aux.getProfissional()){
                     // Inserindo os valores.
-                    lista.add(new String[]{String.valueOf(p.getId()), String.valueOf(aux.getNome()), String.valueOf(aux.getPreco())});
+                    lista.add(new String[]{String.valueOf(aux.getIdServico()), String.valueOf(p.getId()), String.valueOf(aux.getNome()), String.valueOf(aux.getPreco())});
                 }
             }
         }
@@ -58,6 +58,7 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
         btnConfirma = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProfServico = new javax.swing.JTable();
+        btnVoltar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -72,7 +73,7 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnConfirma.setText("confirma");
+        btnConfirma.setText("Confirma");
         btnConfirma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmaActionPerformed(evt);
@@ -92,6 +93,13 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblProfServico);
 
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -101,9 +109,11 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(13, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(61, 61, 61)
+                .addComponent(btnVoltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnConfirma)
-                .addGap(151, 151, 151))
+                .addGap(69, 69, 69))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +121,9 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConfirma)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConfirma)
+                    .addComponent(btnVoltar))
                 .addGap(6, 6, 6))
         );
 
@@ -130,12 +142,27 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmaActionPerformed
-        // TODO add your handling code here:
-        // tblProfServico.
-        // Para resolver esta questão, a identificação do profissional, precisamos também enviar o id. Talvez utilizar uma outra forma de exibir estes dados.
-        // já que, na forma atual, eles não estão sendo exibidos corretamente.
-        // view.view.main.orcamentos.add(new Orcamento(view.view.p.getId(), , )); //como fazer pra descobrir qual profissional o cliente selecionou, sendo que tenho apenas uma string contendo o nome do profissional e o preco?
+        // A indexação da tabela funcina como em uma matriz. A primeira linha inicia com o índice 0
+        // e a primeira coluna também.
+        int linha = tblProfServico.getSelectedRow(); // Obtendo a linha selecionada no momento em que o botão é apertado.
+        // Pegamos a primeira coluna para o Id do serviço.
+        // Como nos é retornado um objeto, convertemos este para string e depois para um inteiro.
+        int idServico = Integer.parseInt(String.valueOf(tblProfServico.getValueAt(linha, 0)));
+        // Obtendo o cliente atual.
+        int cliente = view.view.main.pessoaAtual.getId();
+        // Obtendo o preço.
+        double preco = Double.parseDouble(String.valueOf(tblProfServico.getValueAt(linha, 3)));
+        // Criando um novo serviço.
+        Orcamento orc = new Orcamento(cliente, idServico, preco);
+        // Adicionando o serviço no array de serviços da main.
+        view.view.main.orcamentos.add(orc);
     }//GEN-LAST:event_btnConfirmaActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // Ação do Botão voltar.
+        this.hide();
+        view.show();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,6 +201,7 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirma;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
