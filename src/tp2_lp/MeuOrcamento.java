@@ -3,12 +3,13 @@ package tp2_lp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class MeuOrcamento extends javax.swing.JFrame {
     public static CltUI view;
     public static Cliente c;
-    private static ArrayList<Orcamento> orcamento = new ArrayList<>();
+    private ArrayList<Orcamento> orcamento = new ArrayList<>();
     private static List<String[]> lista = new ArrayList<>();
     
     public MeuOrcamento(CltUI view, Cliente c) {
@@ -112,8 +113,8 @@ public class MeuOrcamento extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // Duplicando os conteúdos ao fechar o form.
-        this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        this.dispose();
+        orcamento.clear();
+        lista.clear();
         this.setVisible(false);
         view.show();
     }//GEN-LAST:event_btnVoltarActionPerformed

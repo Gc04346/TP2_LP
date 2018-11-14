@@ -1,47 +1,46 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package tp2_lp;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class OrcamentosDoClienteXView extends javax.swing.JFrame {
-    private static TodosOsOrcamentosView view;
-    private static MyUI main;
-    private static Cliente c;
-    private static String nomeClt;
-    
-    public OrcamentosDoClienteXView(TodosOsOrcamentosView view, MyUI main, String nomeClt) {
-        initComponents();
+/**
+ *
+ * @author daniel
+ */
+public class MeusPedidos extends javax.swing.JFrame {
+    public static ProfUI view;
+    public ArrayList<Servico> servicos = new ArrayList<>();
+    /**
+     * Creates new form MeusPedidos
+     */
+    public MeusPedidos(ProfUI view) {
         this.view = view;
-        this.main = main;
-        this.nomeClt = nomeClt;
-        for(Pessoa aux : main.pessoas){
-            if (aux.getNome().equals(nomeClt)){
-                c = (Cliente) aux;
-            }
-        }
-        // Lógica do Jtable.
-        String[] nomesColunas = {"Serviço", "Preço", "Profissional"};
+        initComponents();
+        String[] nomesColunas = {"Serviço", "Preço", "Cliente"};
         List<String[]> lista = new ArrayList<>();
         // Preenchendo a lista.
-        for(Orcamento o : main.orcamentos){
-            if(o.getCliente() == c.getId()){ // Caso o cliente seja o responsavel pelo orçamento.
-                for(Servico s : main.servicos){
-                    if(s.getIdServico() == o.getServico()){
-                        for(Pessoa p : main.pessoas){
-                            if(p.getId() == s.getProfissional())
+        for(Orcamento o : view.main.orcamentos){
+            for(Servico s : view.main.servicos){
+                if(o.getServico() == s.getIdServico())
+                    if(s.getProfissional() == view.p.getId()){
+                        for(Pessoa p : view.main.pessoas){
+                            if(p.getId() == o.getCliente())
                                 lista.add(new String[]{String.valueOf(o.getServico()), String.valueOf(o.getPreco()), String.valueOf(p.getNome())});
                         }
                     }
                 }
-            }
+            
         }
         // Criando o modelo da tabela.
         DefaultTableModel model = new DefaultTableModel(lista.toArray(new String[lista.size()][]), nomesColunas);
         // Definindo o modelo da tabela.
-        tblOrcaClient.setModel(model);
-        
+        tblMeusPedidos.setModel(model);
     }
 
     /**
@@ -54,20 +53,14 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnVoltar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblOrcaClient = new javax.swing.JTable();
+        tblMeusPedidos = new javax.swing.JTable();
+        btnVoltar = new javax.swing.JButton();
+        btnRealizarPedidos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnVoltar.setText("voltar");
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
-            }
-        });
-
-        tblOrcaClient.setModel(new javax.swing.table.DefaultTableModel(
+        tblMeusPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -78,27 +71,41 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblOrcaClient);
+        jScrollPane1.setViewportView(tblMeusPedidos);
+
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
+        btnRealizarPedidos.setText("Realizar pedidos");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 326, Short.MAX_VALUE)
-                .addComponent(btnVoltar))
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnVoltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRealizarPedidos)
+                .addGap(66, 66, 66))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnVoltar))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVoltar)
+                    .addComponent(btnRealizarPedidos))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,28 +145,29 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OrcamentosDoClienteXView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MeusPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OrcamentosDoClienteXView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MeusPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OrcamentosDoClienteXView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MeusPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OrcamentosDoClienteXView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MeusPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OrcamentosDoClienteXView(view, main,nomeClt).setVisible(true);
+                new MeusPedidos(view).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRealizarPedidos;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblOrcaClient;
+    private javax.swing.JTable tblMeusPedidos;
     // End of variables declaration//GEN-END:variables
 }

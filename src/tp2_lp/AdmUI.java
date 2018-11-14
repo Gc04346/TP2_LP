@@ -156,6 +156,7 @@ public class AdmUI extends PessoaUI{
     private void btnValidarServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarServicosActionPerformed
         // TODO add your handling code here:
         ValidarServicosView vldsView = new ValidarServicosView(p,this);
+        
         this.hide();
         vldsView.show();
     }//GEN-LAST:event_btnValidarServicosActionPerformed

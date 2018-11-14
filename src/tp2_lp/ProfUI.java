@@ -177,6 +177,9 @@ public class ProfUI extends PessoaUI {
 
     private void btnOrcamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrcamentosActionPerformed
         // TODO add your handling code here:
+        MeusPedidos meusPedidos = new MeusPedidos(this);
+        this.hide();
+        meusPedidos.show();
     }//GEN-LAST:event_btnOrcamentosActionPerformed
 
     /**
