@@ -1,23 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author daniel
- */
 public class CriarNovoAdministrador extends javax.swing.JFrame {
     private static AdmUI admView;
      public int senhaConfirmada;
-    /**
-     * Creates new form CriarNovoAdministrador
-     */
-    public CriarNovoAdministrador(AdmUI admView) {
+
+     public CriarNovoAdministrador(AdmUI admView) {
         initComponents();
         this.admView = admView;
         this.senhaConfirmada=0;
@@ -230,18 +219,17 @@ public class CriarNovoAdministrador extends javax.swing.JFrame {
             }else JOptionPane.showMessageDialog(null, "Confirme a senha do novo administrador.");
         }else JOptionPane.showMessageDialog(null, "A senha do administrador atual está incorreta.");
         this.hide();
+        admView.setLocationRelativeTo(null);
         admView.show();
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.hide();
+        admView.setLocationRelativeTo(null);
         admView.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

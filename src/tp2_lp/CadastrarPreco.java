@@ -1,20 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
-/**
- *
- * @author daniel
- */
 public class CadastrarPreco extends javax.swing.JFrame {
     private static CadastrarPrecoDeServico view;
     private static String nome;
-    /**
-     * Creates new form CadastrarPreco
-     */
+
     public CadastrarPreco(CadastrarPrecoDeServico view, String nome) {
         initComponents();
         txtNomeServico.setText(nome);
@@ -77,20 +66,6 @@ public class CadastrarPreco extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnCancelar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnConfirmar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNomeServico))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(160, 160, 160)
                         .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -100,8 +75,22 @@ public class CadastrarPreco extends javax.swing.JFrame {
                         .addGap(126, 126, 126)
                         .addComponent(jLabel5)
                         .addGap(2, 2, 2)
-                        .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                        .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnCancelar)
+                                .addGap(51, 51, 51)
+                                .addComponent(btnConfirmar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNomeServico))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jLabel2)))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

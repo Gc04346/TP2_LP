@@ -1,25 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author daniel
- */
 public class ValidandoServico extends javax.swing.JFrame {
 
     private static MyUI main;
     private static ValidarServicosView view;
     private static String servico;
 
-    /**
-     * Creates new form ValidandoServico
-     */
     public ValidandoServico(MyUI main, ValidarServicosView view, String servico) {
         this.main = main;
         this.servico = servico;
@@ -135,9 +123,6 @@ public class ValidandoServico extends javax.swing.JFrame {
         //view.show();
     }//GEN-LAST:event_btnValidarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

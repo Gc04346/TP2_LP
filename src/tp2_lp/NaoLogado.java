@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
-/**
- *
- * @author Daniel
- */
 public class NaoLogado extends javax.swing.JFrame {
     private static MyUI main;
     public NaoLogado(MyUI main) {
@@ -33,7 +24,7 @@ public class NaoLogado extends javax.swing.JFrame {
 
         txtInfo.setText("Usuário inexistente!");
 
-        btnVoltar.setText("voltar");
+        btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -47,8 +38,10 @@ public class NaoLogado extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(142, 142, 142)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVoltar)
-                    .addComponent(txtInfo))
+                    .addComponent(txtInfo)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(btnVoltar)))
                 .addContainerGap(162, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -56,9 +49,9 @@ public class NaoLogado extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(124, 124, 124)
                 .addComponent(txtInfo)
-                .addGap(70, 70, 70)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addComponent(btnVoltar)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(65, 65, 65))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -78,12 +71,10 @@ public class NaoLogado extends javax.swing.JFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
         this.hide();
+        main.setLocationRelativeTo(null);
         main.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

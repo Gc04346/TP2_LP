@@ -1,20 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
-/**
- *
- * @author Mauricio
- */
 public class ClienteView extends javax.swing.JFrame {
     private static Cliente clt;
     private static CltUI cltUi;
-    /**
-     * Creates new form ClienteView
-     */
+
     public ClienteView(Cliente clt, CltUI cltUi) {
         initComponents();
         this.clt=clt;
@@ -70,7 +59,7 @@ public class ClienteView extends javax.swing.JFrame {
             }
         });
 
-        btnVoltar.setText("voltar");
+        btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -157,12 +146,10 @@ public class ClienteView extends javax.swing.JFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
         this.hide();
+        cltUi.setLocationRelativeTo(null);
         cltUi.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

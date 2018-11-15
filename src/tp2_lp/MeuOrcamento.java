@@ -116,6 +116,7 @@ public class MeuOrcamento extends javax.swing.JFrame {
         orcamento.clear();
         lista.clear();
         this.setVisible(false);
+        view.setLocationRelativeTo(null);
         view.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 

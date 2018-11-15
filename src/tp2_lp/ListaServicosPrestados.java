@@ -1,24 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
 
-/**
- *
- * @author daniel
- */
 public class ListaServicosPrestados extends javax.swing.JFrame {
     public static Profissional p;
     public static ProfUI profView;
     
-    /**
-     * Creates new form ListaServicosPrestados
-     */
     public ListaServicosPrestados(Profissional p, ProfUI profView) {
         initComponents();
         this.p = p;
@@ -57,7 +45,7 @@ public class ListaServicosPrestados extends javax.swing.JFrame {
         });
         scrollServicos.setViewportView(listServicos);
 
-        btnVoltar.setText("voltar");
+        btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -76,16 +64,15 @@ public class ListaServicosPrestados extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(scrollServicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(btnVoltar)
-                        .addGap(56, 56, 56)
-                        .addComponent(btnEditar)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(151, 151, 151)
+                .addComponent(scrollServicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(btnVoltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEditar)
+                .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,6 +103,7 @@ public class ListaServicosPrestados extends javax.swing.JFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
         this.hide();
+        profView.setLocationRelativeTo(null);
         profView.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
@@ -125,13 +113,11 @@ public class ListaServicosPrestados extends javax.swing.JFrame {
         while(it.hasNext()){
             EditarPrecoView editarPreco = new EditarPrecoView(this,it.next());
             //this.hide();
+            editarPreco.setLocationRelativeTo(null);
             editarPreco.show();
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

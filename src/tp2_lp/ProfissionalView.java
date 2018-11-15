@@ -72,7 +72,7 @@ public class ProfissionalView extends javax.swing.JFrame {
             }
         });
 
-        btnVoltar.setText("voltar");
+        btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);

@@ -1,19 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
-/**
- *
- * @author daniel
- */
 public class ProfUI extends PessoaUI {
     public static Profissional p;
-    /**
-     * Creates new form ProfUI
-     */
+
     public ProfUI(MyUI main, Profissional p) {
         initComponents();
         this.main = main;
@@ -91,10 +80,6 @@ public class ProfUI extends PessoaUI {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVoltar)
-                .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,6 +94,7 @@ public class ProfUI extends PessoaUI {
                         .addGap(70, 77, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVoltar)
                             .addComponent(btnMeusServicosPrestados)
                             .addComponent(btnCadastrarPrecos)
                             .addComponent(btnAlterarDados))
@@ -144,6 +130,7 @@ public class ProfUI extends PessoaUI {
         main.logado = 0;
         main.pessoaAtual=new Pessoa();
         this.hide();
+        main.setLocationRelativeTo(null);
         main.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
@@ -151,6 +138,7 @@ public class ProfUI extends PessoaUI {
         // TODO add your handling code here:
         ProfissionalView alteraDados = new ProfissionalView(main, p, this);
         this.hide();
+        alteraDados.setLocationRelativeTo(null);
         alteraDados.show();
     }//GEN-LAST:event_btnAlterarDadosActionPerformed
 
@@ -158,6 +146,7 @@ public class ProfUI extends PessoaUI {
         // TODO add your handling code here:
         NovoServico novoServicoView = new NovoServico(this);
         this.hide();
+        novoServicoView.setLocationRelativeTo(null);
         novoServicoView.show();
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
@@ -165,6 +154,7 @@ public class ProfUI extends PessoaUI {
         // TODO add your handling code here:
         CadastrarPrecoDeServico novosPrecos = new CadastrarPrecoDeServico(p, this);
         this.hide();
+        novosPrecos.setLocationRelativeTo(null);
         novosPrecos.show();
     }//GEN-LAST:event_btnCadastrarPrecosActionPerformed
 
@@ -172,6 +162,7 @@ public class ProfUI extends PessoaUI {
         // TODO add your handling code here:
         ListaServicosPrestados meusServicos = new ListaServicosPrestados(p,this);
         this.hide();
+        meusServicos.setLocationRelativeTo(null);
         meusServicos.show();
     }//GEN-LAST:event_btnMeusServicosPrestadosActionPerformed
 
@@ -179,12 +170,10 @@ public class ProfUI extends PessoaUI {
         // TODO add your handling code here:
         MeusPedidos meusPedidos = new MeusPedidos(this);
         this.hide();
+        meusPedidos.setLocationRelativeTo(null);
         meusPedidos.show();
     }//GEN-LAST:event_btnOrcamentosActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

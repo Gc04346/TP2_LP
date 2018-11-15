@@ -215,7 +215,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnEnviar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="enviar"/>
+            <Property name="text" type="java.lang.String" value="Enviar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnviarActionPerformed"/>

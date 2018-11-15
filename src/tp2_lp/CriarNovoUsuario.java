@@ -92,7 +92,7 @@ public class CriarNovoUsuario extends javax.swing.JFrame {
             }
         });
 
-        btnEnviar.setText("enviar");
+        btnEnviar.setText("Enviar");
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarActionPerformed(evt);

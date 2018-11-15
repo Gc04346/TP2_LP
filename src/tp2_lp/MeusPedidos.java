@@ -1,24 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author daniel
- */
 public class MeusPedidos extends javax.swing.JFrame {
     public static ProfUI view;
     public ArrayList<Servico> servicos = new ArrayList<>();
-    /**
-     * Creates new form MeusPedidos
-     */
+
     public MeusPedidos(ProfUI view) {
         this.view = view;
         initComponents();
@@ -81,6 +70,11 @@ public class MeusPedidos extends javax.swing.JFrame {
         });
 
         btnRealizarPedidos.setText("Realizar pedidos");
+        btnRealizarPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRealizarPedidosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,14 +82,13 @@ public class MeusPedidos extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnVoltar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRealizarPedidos))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnVoltar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRealizarPedidos)
-                .addGap(66, 66, 66))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,12 +118,14 @@ public class MeusPedidos extends javax.swing.JFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
         this.hide();
+        view.setLocationRelativeTo(null);
         view.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnRealizarPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarPedidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRealizarPedidosActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

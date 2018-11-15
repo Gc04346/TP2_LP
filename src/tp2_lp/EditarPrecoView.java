@@ -1,27 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
-/**
- *
- * @author daniel
- */
 public class EditarPrecoView extends javax.swing.JFrame {
     private static ListaServicosPrestados view;
     private static String nome;
     private static Servico s;
-    /**
-     * Creates new form EditarPrecoView
-     */
+
     public EditarPrecoView(ListaServicosPrestados view, String nome) {
         initComponents();
         for(Servico se : view.profView.main.servicos){
             if(se.getNome().equals(this.nome)){
                 s = se;
-            System.out.println(s.getPreco());
             }
         }
         
@@ -155,9 +143,6 @@ public class EditarPrecoView extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

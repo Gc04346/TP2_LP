@@ -1,19 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
-/**
- *
- * @author daniel
- */
 public class AdmUI extends PessoaUI{
     public static Administrador p;
-    /**
-     * Creates new form AdmUI
-     */
+
     public AdmUI(MyUI main, Administrador p) {
         initComponents();
         this.main = main;
@@ -95,9 +84,6 @@ public class AdmUI extends PessoaUI{
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAlterarDados)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCadastrarServico)
                             .addComponent(btnOrcamentos)
@@ -107,11 +93,12 @@ public class AdmUI extends PessoaUI{
                                 .addComponent(txtNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(58, 96, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVoltar)
-                .addContainerGap())
+                        .addGap(58, 96, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVoltar)
+                            .addComponent(btnAlterarDados))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,9 +117,9 @@ public class AdmUI extends PessoaUI{
                 .addComponent(btnNovoAdm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnValidarServicos)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(btnVoltar)
-                .addContainerGap())
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -142,6 +129,7 @@ public class AdmUI extends PessoaUI{
         // TODO add your handling code here:
         AdministradorView alteraDados = new AdministradorView(p, this);
         this.hide();
+        alteraDados.setLocationRelativeTo(null);
         alteraDados.show();
     }//GEN-LAST:event_btnAlterarDadosActionPerformed
 
@@ -150,6 +138,7 @@ public class AdmUI extends PessoaUI{
         main.logado = 0;
         main.pessoaAtual = new Pessoa();
         this.hide();
+        main.setLocationRelativeTo(null);
         main.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
@@ -158,6 +147,7 @@ public class AdmUI extends PessoaUI{
         ValidarServicosView vldsView = new ValidarServicosView(p,this);
         
         this.hide();
+        vldsView.setLocationRelativeTo(null);
         vldsView.show();
     }//GEN-LAST:event_btnValidarServicosActionPerformed
 
@@ -165,6 +155,7 @@ public class AdmUI extends PessoaUI{
         // TODO add your handling code here:
         NovoServico novoServicoView = new NovoServico(this);
         this.hide();
+        novoServicoView.setLocationRelativeTo(null);
         novoServicoView.show();
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
@@ -172,6 +163,7 @@ public class AdmUI extends PessoaUI{
         // TODO add your handling code here:
         CriarNovoAdministrador view = new CriarNovoAdministrador(this);
         this.hide();
+        view.setLocationRelativeTo(null);
         view.show();
     }//GEN-LAST:event_btnNovoAdmActionPerformed
 
@@ -179,12 +171,10 @@ public class AdmUI extends PessoaUI{
         // TODO add your handling code here:
         TodosOsOrcamentosView listarOrcamentos = new TodosOsOrcamentosView(this,main);
         this.hide();
+        listarOrcamentos.setLocationRelativeTo(null);
         listarOrcamentos.show();
     }//GEN-LAST:event_btnOrcamentosActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -21,9 +21,7 @@ public class MyUI extends javax.swing.JFrame {
     public static Pessoa pessoaAtual;
     public static ArrayList<Servico> servicos = new ArrayList<>();
     public static ArrayList<Orcamento> orcamentos = new ArrayList<>();
-    /**
-     * Creates new form MyUI
-     */
+    
     public MyUI() {
         initComponents();
     }
@@ -177,9 +175,6 @@ public class MyUI extends javax.swing.JFrame {
         tela2.show();        
     }//GEN-LAST:event_btnNovoUsuarioActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) throws IOException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

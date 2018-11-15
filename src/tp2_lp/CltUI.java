@@ -1,19 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2_lp;
 
-/**
- *
- * @author daniel
- */
 public class CltUI extends PessoaUI {
     private static Cliente p;
-    /**
-     * Creates new form CltUI
-     */
+    
     public CltUI(MyUI main, Cliente p) {
         initComponents();
         this.main = main;
@@ -87,9 +76,6 @@ public class CltUI extends PessoaUI {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAlterarDados)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCadastrarServico)
                             .addComponent(btnFazerOrcamento)
@@ -98,11 +84,12 @@ public class CltUI extends PessoaUI {
                                 .addComponent(txtNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(58, 73, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVoltar)
-                .addContainerGap())
+                        .addGap(58, 73, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVoltar)
+                            .addComponent(btnAlterarDados))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,9 +106,9 @@ public class CltUI extends PessoaUI {
                 .addComponent(btnCadastrarServico)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnListaOrcamentos)
-                .addGap(63, 63, 63)
+                .addGap(52, 52, 52)
                 .addComponent(btnVoltar)
-                .addContainerGap())
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -132,6 +119,7 @@ public class CltUI extends PessoaUI {
         main.logado = 0;
         main.pessoaAtual= new Pessoa();
         this.hide();
+        main.setLocationRelativeTo(null);
         main.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
@@ -139,6 +127,7 @@ public class CltUI extends PessoaUI {
         // TODO add your handling code here:
         ClienteView alteraDados = new ClienteView(p, this);
         this.hide();
+        alteraDados.setLocationRelativeTo(null);
         alteraDados.show();
     }//GEN-LAST:event_btnAlterarDadosActionPerformed
 
@@ -146,6 +135,7 @@ public class CltUI extends PessoaUI {
         // TODO add your handling code here:
         NovoServico nvServicoView = new NovoServico(this);
         this.hide();
+        nvServicoView.setLocationRelativeTo(null);
         nvServicoView.show();
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
@@ -153,6 +143,7 @@ public class CltUI extends PessoaUI {
         // TODO add your handling code here:
         MeuOrcamento orcamentos = new MeuOrcamento(this, p);
         this.hide();
+        orcamentos.setLocationRelativeTo(null);
         orcamentos.show();
     }//GEN-LAST:event_btnListaOrcamentosActionPerformed
 
@@ -160,12 +151,10 @@ public class CltUI extends PessoaUI {
         // TODO add your handling code here:
         Servicos servicos = new Servicos(this);
         this.hide();
+        servicos.setLocationRelativeTo(null);
         servicos.show();
     }//GEN-LAST:event_btnFazerOrcamentoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
