@@ -13,9 +13,7 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
     private static String nomeServico;
     private static ArrayList<Servico> servico = new ArrayList<>();
     private static Servico bolinha;
-    /**
-     * Creates new form ProfissionaisQuePrestam
-     */
+    
     public ProfissionaisQuePrestam(Servicos view, String nomeServico) {
         // Man, insira mais comentários. Não estou conseguindo captar o que você está fazendo.
         initComponents();
@@ -107,13 +105,14 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnVoltar)
-                        .addGap(239, 239, 239)
-                        .addComponent(btnConfirma))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnVoltar)
+                .addGap(239, 239, 239)
+                .addComponent(btnConfirma)
                 .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +152,7 @@ public class ProfissionaisQuePrestam extends javax.swing.JFrame {
         // Obtendo o preço.
         double preco = Double.parseDouble(String.valueOf(tblProfServico.getValueAt(linha, 3)));
         // Criando um novo serviço.
-        Orcamento orc = new Orcamento(cliente, idServico, preco);
+        Orcamento orc = new Orcamento(cliente, idServico, preco, false, 1);
         // Adicionando o serviço no array de serviços da main.
         view.view.main.orcamentos.add(orc);
         // Avisando sobre o sucesso.

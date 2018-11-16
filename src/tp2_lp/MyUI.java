@@ -211,6 +211,8 @@ public class MyUI extends javax.swing.JFrame {
         boolean validade = false;
         int idCliente = 0;
         int idServico = 0;
+        boolean aceito = false;
+        int status = 1;
         
         try{
             // Leitura do arquivo de pessoas.
@@ -317,7 +319,13 @@ public class MyUI extends javax.swing.JFrame {
                     }
                     if(tokens.hasMoreTokens()){
                         preco = Double.parseDouble(tokens.nextToken());
-                        orcamentos.add(new Orcamento(id, idCliente, idServico, preco));
+                    }
+                    if(tokens.hasMoreTokens()){
+                        aceito = Boolean.parseBoolean(tokens.nextToken());
+                    }
+                    if(tokens.hasMoreTokens()){
+                        status = Integer.parseInt(tokens.nextToken());
+                        orcamentos.add(new Orcamento(id, idCliente, idServico, preco, aceito, status));
                     }
                 } else
                     break;
@@ -363,7 +371,7 @@ public class MyUI extends javax.swing.JFrame {
                                     linha="";
                                 }
                                 for(Orcamento o : orcamentos){
-                                    linha = o.getIdOrcamento()+ ";" +o.getCliente()+ ";" +o.getServico()+ ";" +o.getPreco()+"\n";
+                                    linha = o.getIdOrcamento()+ ";" +o.getCliente()+ ";" +o.getServico()+ ";" +o.getPreco()+ ";" +o.getAceito()+ ";" +o.getStatus()+"\n";
                                     buffWriteOrcamentos.append(linha);
                                     System.out.println(linha);
                                     linha="";
