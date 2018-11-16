@@ -2,6 +2,7 @@ package tp2_lp;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class MeusPedidos extends javax.swing.JFrame {
@@ -11,7 +12,7 @@ public class MeusPedidos extends javax.swing.JFrame {
     public MeusPedidos(ProfUI view) {
         this.view = view;
         initComponents();
-        String[] nomesColunas = {"Serviço", "Preço", "Cliente"};
+        String[] nomesColunas = {"Id", "Serviço", "Preço", "Cliente", "Aceito", "Status"};
         List<String[]> lista = new ArrayList<>();
         // Preenchendo a lista.
         for(Orcamento o : view.main.orcamentos){
@@ -19,8 +20,28 @@ public class MeusPedidos extends javax.swing.JFrame {
                 if(o.getServico() == s.getIdServico())
                     if(s.getProfissional() == view.p.getId()){
                         for(Pessoa p : view.main.pessoas){
-                            if(p.getId() == o.getCliente())
-                                lista.add(new String[]{String.valueOf(o.getServico()), String.valueOf(o.getPreco()), String.valueOf(p.getNome())});
+                            if(p.getId() == o.getCliente()){
+                                // Definição das strings para os campos aceito e status.
+                                String aceito, status;
+                                // Caso o serviço esteja aceito.
+                                if(o.getAceito()){ 
+                                    aceito = "Sim";
+                                }else{
+                                    aceito = "Não";
+                                }
+                                // Verificamos o status do pedido.
+                                if(o.getStatus() == 1){
+                                    status = "Pendente";
+                                }else if(o.getStatus() == 2){
+                                    status = "Incompleto";
+                                }else if(o.getStatus() == 3){
+                                    status = "Concluído";
+                                }else{
+                                    status = "Indefinido";
+                                }
+                                // Adicionando as strings na lista.
+                                lista.add(new String[]{String.valueOf(o.getIdOrcamento()), String.valueOf(s.getNome()), String.valueOf(o.getPreco()), String.valueOf(p.getNome()), aceito, status});
+                            }
                         }
                     }
                 }
@@ -46,6 +67,7 @@ public class MeusPedidos extends javax.swing.JFrame {
         tblMeusPedidos = new javax.swing.JTable();
         btnVoltar = new javax.swing.JButton();
         btnRealizarPedidos = new javax.swing.JButton();
+        btnAceitar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,10 +91,17 @@ public class MeusPedidos extends javax.swing.JFrame {
             }
         });
 
-        btnRealizarPedidos.setText("Realizar pedidos");
+        btnRealizarPedidos.setText("Status");
         btnRealizarPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRealizarPedidosActionPerformed(evt);
+            }
+        });
+
+        btnAceitar.setText("Aceitar");
+        btnAceitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceitarActionPerformed(evt);
             }
         });
 
@@ -85,6 +114,8 @@ public class MeusPedidos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnVoltar)
+                        .addGap(67, 67, 67)
+                        .addComponent(btnAceitar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRealizarPedidos))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -97,7 +128,8 @@ public class MeusPedidos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
-                    .addComponent(btnRealizarPedidos))
+                    .addComponent(btnRealizarPedidos)
+                    .addComponent(btnAceitar))
                 .addContainerGap())
         );
 
@@ -123,8 +155,83 @@ public class MeusPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnRealizarPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarPedidosActionPerformed
-        // TODO add your handling code here:
+        // Ação de realizar o pedido. Na verdade o botão permite o profissional mudar o status de um pedido.
+        // que é valido.
+        // Obtemos primeiramente a linha selecionada pelo profissional.
+        int linha = tblMeusPedidos.getSelectedRow();
+        // Verificando se o usuário selecionou alguma linha.
+        if(linha == -1){
+            JOptionPane.showMessageDialog(null, "Selecione um Orçamento da tabela.");
+        }else{
+            // Obtemos o id do orcamento.
+            int idOrcamento = Integer.parseInt(String.valueOf(tblMeusPedidos.getValueAt(linha, 0)));
+            // Obtendo a condição do orçamento.
+            String condOrc = String.valueOf(tblMeusPedidos.getValueAt(linha, 4));
+            // Validando a operação
+            if(condOrc.equals("Não")){ // Caso o pedido não esteja aceito.
+                // Avisamos o profissional que ele não pode mudar a situação.
+                JOptionPane.showMessageDialog(null, "Você não pode mudar o status de um pedido não aceito !!");
+            }else{ // Caso o pedido esteja aceito mudamos o status.
+                // Obtemos o status do pedido.
+                int statusFuturo = 1;
+                String statusOrc = String.valueOf(tblMeusPedidos.getValueAt(linha, 5));
+                // Descobrindo o status e passando para o próximo.
+                if(statusOrc.equals("Pendente")){
+                    statusFuturo = 2;
+                }else if(statusOrc.equals("Incompleto")){
+                    statusFuturo = 3;
+                }else if(statusOrc.equals("Completo")){
+                    JOptionPane.showMessageDialog(null, "Orçamento já concluído !!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Operação Inválida");
+                    return;
+                }
+                // Continuação da alteração.
+                // Procuramos o orçamento selecionado.
+                for(Orcamento o : view.main.orcamentos){
+                    if(o.getIdOrcamento() == idOrcamento){
+                        o.setStatus(statusFuturo);
+                        break; // Paramos o laço
+                    }
+                }
+                // Forçamos a saida para recarregamento da tabela.
+                JOptionPane.showMessageDialog(null, "Status Alterado !!");
+                this.hide();
+                view.setLocationRelativeTo(null);
+                view.show();
+            }
+        }
     }//GEN-LAST:event_btnRealizarPedidosActionPerformed
+
+    private void btnAceitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceitarActionPerformed
+        // Verificamos a linha selecionada.
+        int linha = tblMeusPedidos.getSelectedRow();
+        // Verificando se o usuário selecionou uma linha.
+        if(linha == -1){
+            JOptionPane.showMessageDialog(null, "Selecione um Orçamento da tabela !!");
+        }else{
+            // Obtemos o status de aceitação do pedido.
+            String aceito = String.valueOf(tblMeusPedidos.getValueAt(linha, 3));
+            // Pedidos aceitos não podem ser alterados.
+            if(aceito.equals("Sim")){
+                JOptionPane.showMessageDialog(null, "Pedidos Aceitos não podem ser alterados !!");
+            }else{
+                int idOrcamento = Integer.parseInt(String.valueOf(tblMeusPedidos.getValueAt(linha, 0)));
+                // Procurando o orçamento e mudando o status de aceitação.
+                for(Orcamento o : view.main.orcamentos){
+                    if(o.getIdOrcamento() == idOrcamento){
+                        o.setAceito(true);
+                        break; // Paramos o laço
+                    }
+                }
+                // Forçamos a saida para recarregamento da tabela.
+                JOptionPane.showMessageDialog(null, "Pedido Aceito !!");
+                this.hide();
+                view.setLocationRelativeTo(null);
+                view.show();
+            }
+        }
+    }//GEN-LAST:event_btnAceitarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -159,6 +266,7 @@ public class MeusPedidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceitar;
     private javax.swing.JButton btnRealizarPedidos;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JPanel jPanel1;

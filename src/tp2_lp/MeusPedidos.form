@@ -43,6 +43,8 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                          <Component id="btnAceitar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnRealizarPedidos" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -60,6 +62,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnRealizarPedidos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAceitar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -98,10 +101,18 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnRealizarPedidos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Realizar pedidos"/>
+            <Property name="text" type="java.lang.String" value="Status"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRealizarPedidosActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnAceitar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Aceitar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAceitarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
