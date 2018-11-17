@@ -22,7 +22,7 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
             }
         }
         // Lógica do Jtable.
-        String[] nomesColunas = {"Serviço", "Preço", "Profissional"};
+        String[] nomesColunas = {"Serviço", "Preço", "Profissional", "Aceito", "Status"};
         List<String[]> lista = new ArrayList<>();
         // Preenchendo a lista.
         for(Orcamento o : main.orcamentos){
@@ -30,8 +30,29 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
                 for(Servico s : main.servicos){
                     if(s.getIdServico() == o.getServico()){
                         for(Pessoa p : main.pessoas){
-                            if(p.getId() == s.getProfissional())
-                                lista.add(new String[]{String.valueOf(o.getServico()), String.valueOf(o.getPreco()), String.valueOf(p.getNome())});
+                            if(p.getId() == s.getProfissional()){
+                                // Inserindo valores legíveis.
+                                String aceito, statusTbl;
+                                int status;
+                                // Verificado se o orçamento foi aceito.
+                                if(o.getAceito()){ 
+                                    aceito = "Sim";
+                                }else{
+                                    aceito = "Não";
+                                }   
+                                // Verificando o status do orçamento.
+                                status = o.getStatus();
+                                if(status == 1){
+                                    statusTbl = "Pendente";
+                                }else if(status == 2){
+                                    statusTbl = "Incompleto";
+                                }else if(status == 3){
+                                    statusTbl = "Concluído";
+                                }else{
+                                    statusTbl = "Indefinido";
+                                }
+                                lista.add(new String[]{String.valueOf(o.getServico()), String.valueOf(o.getPreco()), String.valueOf(p.getNome()), aceito, statusTbl});
+                            }
                         }
                     }
                 }

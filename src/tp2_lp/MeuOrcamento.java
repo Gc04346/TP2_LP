@@ -23,15 +23,39 @@ public class MeuOrcamento extends javax.swing.JFrame {
         }
         Iterator<Orcamento> it = orcamento.iterator();
         // Definindo o nome das colunas na tabela.
-        String[] nomeColunas = {"Id do Orçamento", "Id Cliente", "Nome", "Preco"};
+        String[] nomeColunas = {"Id do Orçamento", "Profissional", "Nome", "Preco", "Aceito", "Status"};
         // Logica para preenchimento da table.
         while(it.hasNext()){
             Orcamento aux = it.next();
             // Obtendo o nome dos servicos.
             for(Servico s : view.main.servicos){
                 if(s.getIdServico() == aux.getServico()){
-                    // Inserindo os valores.
-                    lista.add(new String[]{String.valueOf(aux.getIdOrcamento()), String.valueOf(aux.getCliente()), String.valueOf(s.getNome()), String.valueOf(aux.getPreco())});
+                    for(Pessoa p : view.main.pessoas){
+                        if(s.getProfissional() == p.getId()){ // Buscando o profissional.
+                            // Inserindo valores legíveis.
+                            String aceito, statusTbl;
+                            int status;
+                            // Verificado se o orçamento foi aceito.
+                            if(aux.getAceito()){ 
+                                aceito = "Sim";
+                            }else{
+                                aceito = "Não";
+                            }
+                            // Verificando o status do orçamento.
+                            status = aux.getStatus();
+                            if(status == 1){
+                                statusTbl = "Pendente";
+                            }else if(status == 2){
+                                statusTbl = "Incompleto";
+                            }else if(status == 3){
+                                statusTbl = "Concluído";
+                            }else{
+                                statusTbl = "Indefinido";
+                            }
+                            // Inserindo os valores.
+                            lista.add(new String[]{String.valueOf(aux.getIdOrcamento()), p.getNome(), String.valueOf(s.getNome()), String.valueOf(aux.getPreco()), aceito, statusTbl});
+                        }
+                    }   
                 }
             }
         }
