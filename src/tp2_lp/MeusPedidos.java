@@ -151,6 +151,7 @@ public class MeusPedidos extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         view.setLocationRelativeTo(null);
+        view.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         view.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
@@ -198,6 +199,7 @@ public class MeusPedidos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Status Alterado !!");
                 this.hide();
                 view.setLocationRelativeTo(null);
+                view.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
                 view.show();
             }
         }
@@ -228,6 +230,7 @@ public class MeusPedidos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Pedido Aceito !!");
                 this.hide();
                 view.setLocationRelativeTo(null);
+                view.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
                 view.show();
             }
         }

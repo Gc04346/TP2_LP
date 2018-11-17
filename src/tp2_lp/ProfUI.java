@@ -139,6 +139,7 @@ public class ProfUI extends PessoaUI {
         ProfissionalView alteraDados = new ProfissionalView(main, p, this);
         this.hide();
         alteraDados.setLocationRelativeTo(null);
+        alteraDados.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         alteraDados.show();
     }//GEN-LAST:event_btnAlterarDadosActionPerformed
 
@@ -147,6 +148,7 @@ public class ProfUI extends PessoaUI {
         NovoServico novoServicoView = new NovoServico(this);
         this.hide();
         novoServicoView.setLocationRelativeTo(null);
+        novoServicoView.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         novoServicoView.show();
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
@@ -155,6 +157,7 @@ public class ProfUI extends PessoaUI {
         CadastrarPrecoDeServico novosPrecos = new CadastrarPrecoDeServico(p, this);
         this.hide();
         novosPrecos.setLocationRelativeTo(null);
+        novosPrecos.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         novosPrecos.show();
     }//GEN-LAST:event_btnCadastrarPrecosActionPerformed
 
@@ -163,6 +166,7 @@ public class ProfUI extends PessoaUI {
         ListaServicosPrestados meusServicos = new ListaServicosPrestados(p,this);
         this.hide();
         meusServicos.setLocationRelativeTo(null);
+        meusServicos.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         meusServicos.show();
     }//GEN-LAST:event_btnMeusServicosPrestadosActionPerformed
 
@@ -171,6 +175,7 @@ public class ProfUI extends PessoaUI {
         MeusPedidos meusPedidos = new MeusPedidos(this);
         this.hide();
         meusPedidos.setLocationRelativeTo(null);
+        meusPedidos.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         meusPedidos.show();
     }//GEN-LAST:event_btnOrcamentosActionPerformed
 

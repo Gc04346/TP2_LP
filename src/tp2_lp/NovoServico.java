@@ -27,14 +27,14 @@ public class NovoServico extends javax.swing.JFrame {
 
         jLabel1.setText("Entre abaixo com o nome do servico:");
 
-        btnVoltar.setText("voltar");
+        btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
             }
         });
 
-        bntEnviar.setText("enviar");
+        bntEnviar.setText("Enviar");
         bntEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntEnviarActionPerformed(evt);

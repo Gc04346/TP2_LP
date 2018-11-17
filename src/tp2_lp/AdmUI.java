@@ -130,6 +130,7 @@ public class AdmUI extends PessoaUI{
         AdministradorView alteraDados = new AdministradorView(p, this);
         this.hide();
         alteraDados.setLocationRelativeTo(null);
+        alteraDados.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         alteraDados.show();
     }//GEN-LAST:event_btnAlterarDadosActionPerformed
 
@@ -148,6 +149,7 @@ public class AdmUI extends PessoaUI{
         
         this.hide();
         vldsView.setLocationRelativeTo(null);
+        vldsView.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         vldsView.show();
     }//GEN-LAST:event_btnValidarServicosActionPerformed
 
@@ -156,6 +158,7 @@ public class AdmUI extends PessoaUI{
         NovoServico novoServicoView = new NovoServico(this);
         this.hide();
         novoServicoView.setLocationRelativeTo(null);
+        novoServicoView.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         novoServicoView.show();
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
@@ -164,6 +167,7 @@ public class AdmUI extends PessoaUI{
         CriarNovoAdministrador view = new CriarNovoAdministrador(this);
         this.hide();
         view.setLocationRelativeTo(null);
+        view.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         view.show();
     }//GEN-LAST:event_btnNovoAdmActionPerformed
 
@@ -172,6 +176,7 @@ public class AdmUI extends PessoaUI{
         TodosOsOrcamentosView listarOrcamentos = new TodosOsOrcamentosView(this,main);
         this.hide();
         listarOrcamentos.setLocationRelativeTo(null);
+        listarOrcamentos.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         listarOrcamentos.show();
     }//GEN-LAST:event_btnOrcamentosActionPerformed
 

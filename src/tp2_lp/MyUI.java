@@ -147,16 +147,19 @@ public class MyUI extends javax.swing.JFrame {
                 case 1: AdmUI admView = new AdmUI(this, (Administrador) pessoaAtual);
                         this.hide();
                         admView.setLocationRelativeTo(null);
+                        admView.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
                         admView.show();
                         break;
                 case 2: ProfUI profView = new ProfUI(this, (Profissional) pessoaAtual);
                         this.hide();
                         profView.setLocationRelativeTo(null);
+                        profView.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
                         profView.show();
                         break;
                 case 3: CltUI cltView = new CltUI(this, (Cliente) pessoaAtual);
                         this.hide();
                         cltView.setLocationRelativeTo(null);
+                        cltView.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
                         cltView.show();
                         break;
             }
@@ -164,6 +167,7 @@ public class MyUI extends javax.swing.JFrame {
             //JOptionPane.showMessageDialog(null, "Usuário inexistente");
             NaoLogado tela = new NaoLogado(this);
             this.hide();
+            tela.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
             tela.show();
         }
     }//GEN-LAST:event_btnEnviarActionPerformed
@@ -172,6 +176,7 @@ public class MyUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         CriarNovoUsuario tela2 = new CriarNovoUsuario(this);
         this.hide();
+        tela2.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         tela2.show();        
     }//GEN-LAST:event_btnNovoUsuarioActionPerformed
 

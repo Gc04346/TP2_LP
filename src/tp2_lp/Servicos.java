@@ -101,6 +101,7 @@ public class Servicos extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         view.setLocationRelativeTo(null);
+        view.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         view.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
@@ -110,6 +111,7 @@ public class Servicos extends javax.swing.JFrame {
         while(it.hasNext()){
             ProfissionaisQuePrestam profs = new ProfissionaisQuePrestam(this, it.next());
             profs.setLocationRelativeTo(null);
+            profs.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
             profs.show();
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed

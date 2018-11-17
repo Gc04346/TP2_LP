@@ -158,6 +158,7 @@ public class AdministradorView extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         admUi.setLocationRelativeTo(null);
+        admUi.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         admUi.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 

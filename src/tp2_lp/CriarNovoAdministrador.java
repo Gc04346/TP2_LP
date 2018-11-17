@@ -220,6 +220,7 @@ public class CriarNovoAdministrador extends javax.swing.JFrame {
         }else JOptionPane.showMessageDialog(null, "A senha do administrador atual está incorreta.");
         this.hide();
         admView.setLocationRelativeTo(null);
+        admView.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         admView.show();
     }//GEN-LAST:event_btnEnviarActionPerformed
 
@@ -227,6 +228,7 @@ public class CriarNovoAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         admView.setLocationRelativeTo(null);
+        admView.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         admView.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 

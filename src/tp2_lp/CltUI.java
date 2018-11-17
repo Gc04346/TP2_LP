@@ -128,6 +128,7 @@ public class CltUI extends PessoaUI {
         ClienteView alteraDados = new ClienteView(p, this);
         this.hide();
         alteraDados.setLocationRelativeTo(null);
+        alteraDados.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         alteraDados.show();
     }//GEN-LAST:event_btnAlterarDadosActionPerformed
 
@@ -136,6 +137,7 @@ public class CltUI extends PessoaUI {
         NovoServico nvServicoView = new NovoServico(this);
         this.hide();
         nvServicoView.setLocationRelativeTo(null);
+        nvServicoView.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         nvServicoView.show();
     }//GEN-LAST:event_btnCadastrarServicoActionPerformed
 
@@ -144,6 +146,7 @@ public class CltUI extends PessoaUI {
         MeuOrcamento orcamentos = new MeuOrcamento(this, p);
         this.hide();
         orcamentos.setLocationRelativeTo(null);
+        orcamentos.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         orcamentos.show();
     }//GEN-LAST:event_btnListaOrcamentosActionPerformed
 
@@ -152,6 +155,7 @@ public class CltUI extends PessoaUI {
         Servicos servicos = new Servicos(this);
         this.hide();
         servicos.setLocationRelativeTo(null);
+        servicos.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         servicos.show();
     }//GEN-LAST:event_btnFazerOrcamentoActionPerformed
 

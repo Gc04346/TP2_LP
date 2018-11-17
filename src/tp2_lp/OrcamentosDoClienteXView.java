@@ -140,6 +140,7 @@ public class OrcamentosDoClienteXView extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         view.setLocationRelativeTo(null);
+        view.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         view.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 

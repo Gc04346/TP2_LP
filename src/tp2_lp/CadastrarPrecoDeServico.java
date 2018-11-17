@@ -130,6 +130,7 @@ public class CadastrarPrecoDeServico extends javax.swing.JFrame {
             CadastrarPreco cadastrarPreco = new CadastrarPreco(this,it.next());
             //this.hide();
             cadastrarPreco.setLocationRelativeTo(null);
+            cadastrarPreco.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
             cadastrarPreco.show();
         }
     }//GEN-LAST:event_btnEnviarActionPerformed
@@ -138,6 +139,7 @@ public class CadastrarPrecoDeServico extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         profView.setLocationRelativeTo(null);
+        profView.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         profView.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 

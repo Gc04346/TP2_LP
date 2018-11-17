@@ -147,6 +147,7 @@ public class ClienteView extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         cltUi.setLocationRelativeTo(null);
+        cltUi.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         cltUi.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 

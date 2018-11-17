@@ -104,6 +104,7 @@ public class ListaServicosPrestados extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         profView.setLocationRelativeTo(null);
+        profView.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         profView.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
@@ -114,6 +115,7 @@ public class ListaServicosPrestados extends javax.swing.JFrame {
             EditarPrecoView editarPreco = new EditarPrecoView(this,it.next());
             //this.hide();
             editarPreco.setLocationRelativeTo(null);
+            editarPreco.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
             editarPreco.show();
         }
     }//GEN-LAST:event_btnEditarActionPerformed

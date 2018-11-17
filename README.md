@@ -1,2 +1,4 @@
 ### Tarefas pendentes do TP de LP.
-	- Não fechar a janela com o botão de fechar.
+	- Para impedir que um jframe não feche utilize.
+		setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+	- Tela de validar serciços do administrador com o layout vacalhado.

@@ -122,6 +122,7 @@ public class TodosOsOrcamentosView extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
         view.setLocationRelativeTo(null);
+        view.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         view.show();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
@@ -131,6 +132,7 @@ public class TodosOsOrcamentosView extends javax.swing.JFrame {
         while(it.hasNext()){
             OrcamentosDoClienteXView view = new OrcamentosDoClienteXView(this, main, it.next());
             view.setLocationRelativeTo(null);
+            view.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
             view.show();
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
